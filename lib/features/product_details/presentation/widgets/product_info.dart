@@ -23,7 +23,7 @@ class ProductInfo extends StatelessWidget {
             Text('\$50.00', style: AppStyles.textRegular16),
             Spacer(),
             Text(
-              '(125)Reviews',
+              '(125) Reviews',
               style: AppStyles.textSemiBold10.copyWith(
                 color: AppColors.secondaryColor,
               ),

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gradprojectstorio/core/utils/app_colors.dart';
 
 class ImageSection extends StatefulWidget {
   const ImageSection({super.key, required this.images});
@@ -45,8 +46,10 @@ class _ImageSectionState extends State<ImageSection> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: isSelected ? Colors.black : Colors.transparent,
-                      width: 2,
+                      color: isSelected
+                          ? AppColors.primaryColor
+                          : Colors.transparent,
+                      width: 3,
                     ),
                     image: DecorationImage(
                       image: NetworkImage(image),

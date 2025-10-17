@@ -15,6 +15,7 @@ class OwnerInfo extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           image: const DecorationImage(
+            fit: BoxFit.cover,
             image: NetworkImage('https://picsum.photos/400/300?1'),
           ),
         ),
@@ -22,7 +23,7 @@ class OwnerInfo extends StatelessWidget {
       title: Text('Owner Name', style: AppStyles.textSemiBold12),
       trailing: GestureDetector(
         onTap: () {},
-        child: Icon(Icons.favorite, color: Colors.red),
+        child: Icon(Icons.favorite_outline),
       ),
     );
   }

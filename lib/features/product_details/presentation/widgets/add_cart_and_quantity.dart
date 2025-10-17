@@ -36,7 +36,10 @@ class AddToCardAndQuantity extends StatelessWidget {
           ),
         ),
         SizedBox(height: 16.h),
-        CustomButton(title: 'Add to Cart'),
+        SizedBox(
+          width: double.infinity,
+          child: CustomButton(title: 'Add to Cart'),
+        ),
       ],
     );
   }

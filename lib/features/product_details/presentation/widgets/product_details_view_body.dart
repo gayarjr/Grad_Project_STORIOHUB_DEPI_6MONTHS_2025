@@ -27,7 +27,7 @@ class ProductDetailsViewBody extends StatelessWidget {
             ImageSection(images: images),
             SizedBox(height: 24.h),
             OwnerInfo(),
-            SizedBox(height: 16.h),
+            SizedBox(height: 24.h),
             ProductInfo(),
             SizedBox(height: 24.h),
             AddToCardAndQuantity(),

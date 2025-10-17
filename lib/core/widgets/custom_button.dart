@@ -21,12 +21,12 @@ class CustomButton extends StatelessWidget {
       height: 48.h,
       child: ElevatedButton(
         onPressed: onTap,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: newDesign == true
-              ? AppColors.primaryColor
-              : AppColors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all(
+            newDesign == true ? AppColors.primaryColor : AppColors.white,
+          ),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
         ),
         child: Text(
