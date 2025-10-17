@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_constants.dart';
 import 'package:gradprojectstorio/features/Home/presentation/pages/home.dart';
+import 'package:gradprojectstorio/features/wishlist/presentation/page/wishlist_view.dart';
 
 class MainNavScreen extends StatefulWidget {
   const MainNavScreen({super.key});
@@ -14,7 +15,7 @@ class _MainNavScreenState extends State<MainNavScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const Center(child: Text("Wishlist Page")),
+    const WishlistView(),
     const Center(child: Text("Cart Page")),
     const Center(child: Text("Search Page")),
     const Center(child: Text("Profile Page")),

@@ -4,6 +4,7 @@ import 'package:gradprojectstorio/core/utils/app_constants.dart';
 
 AppBar customAppbar() {
   return AppBar(
+    scrolledUnderElevation: 0,
     backgroundColor: AppColors.white,
     elevation: 0,
     leading: IconButton(
