@@ -33,6 +33,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_screenutil: ^5.9.3
+  google_fonts: ^6.3.2
   smooth_page_indicator: ^1.2.1
 
 dev_dependencies:

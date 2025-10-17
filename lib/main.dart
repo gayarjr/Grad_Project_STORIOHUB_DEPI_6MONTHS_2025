@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gradprojectstorio/features/Home/presentation/pages/main_nav_screen.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(textTheme: GoogleFonts.cairoTextTheme()),
         title: 'STORIO',
         home: const MainNavScreen(),
       ),
