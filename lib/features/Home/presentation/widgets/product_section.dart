@@ -46,7 +46,7 @@ class ProductSection extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.grey_shade),
+                  border: Border.all(color: AppColors.greyShade),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
