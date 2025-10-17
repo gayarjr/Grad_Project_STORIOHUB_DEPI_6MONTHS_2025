@@ -2,10 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_constants.dart';
 import 'package:gradprojectstorio/features/Home/presentation/pages/home.dart';
+import 'package:gradprojectstorio/features/Search_tab/pages/search_screen.dart';
 import 'package:gradprojectstorio/features/wishlist/presentation/page/wishlist_view.dart';
+
+final List<Map<String, String>> allProducts = [
+  {
+    "title": "Leather Handbag",
+    "image": "assets/images/bags.png",
+    "price": "\$49.00",
+  },
+  {
+    "title": "Necklaces",
+    "image": "assets/images/Necklaces3.png",
+    "price": "\$79.00",
+  },
+  {
+    "title": "Carpets",
+    "image": "assets/images/Handcraft Carpets2.png",
+    "price": "\$120.00",
+  },
+  {
+    "title": "Golden Ring",
+    "image": "assets/images/rings.png",
+    "price": "\$130.00",
+  },
+  {
+    "title": "Gold Necklace",
+    "image": "assets/images/Necklaces3.png",
+    "price": "\$60.00",
+  },
+  {
+    "title": "Diamond Ring",
+    "image": "assets/images/rings2.png",
+    "price": "\$150.00",
+  },
+  {
+    "title": "Handmade Carpet",
+    "image": "assets/images/Handcraft Carpets.png",
+    "price": "\$120.00",
+  },
+];
 
 class MainNavScreen extends StatefulWidget {
   const MainNavScreen({super.key});
+
   @override
   State<MainNavScreen> createState() => _MainNavScreenState();
 }
@@ -13,13 +53,19 @@ class MainNavScreen extends StatefulWidget {
 class _MainNavScreenState extends State<MainNavScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const WishlistView(),
-    const Center(child: Text("Cart Page")),
-    const Center(child: Text("Search Page")),
-    const Center(child: Text("Profile Page")),
-  ];
+  late final List<Widget> _screens;
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      const HomeScreen(),
+      const WishlistView(),
+      const Center(child: Text("Cart Page")),
+      SearchScreen(allProducts: allProducts),
+      const Center(child: Text("Profile Page")),
+    ];
+  }
 
   void _onItemTapped(int index) {
     setState(() {

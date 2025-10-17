@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gradprojectstorio/core/widgets/custom_app_bar.dart';
+import 'package:gradprojectstorio/core/utils/app_colors.dart';
+import 'package:gradprojectstorio/core/utils/app_constants.dart';
 import 'package:gradprojectstorio/features/Home/presentation/widgets/category_list.dart';
 import 'package:gradprojectstorio/features/Home/presentation/widgets/image_slider.dart';
 import 'package:gradprojectstorio/features/Home/presentation/widgets/product_section.dart';
-import 'package:gradprojectstorio/features/Home/presentation/widgets/search_bar.dart';
+import 'package:gradprojectstorio/features/Search_tab/widget/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -38,22 +39,89 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppbar(),
+      backgroundColor: AppColors.backgroundColor,
+
+      appBar: AppBar(
+        backgroundColor: AppColors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.menu, color: AppColors.textColor),
+          onPressed: () {},
+        ),
+        title: const Text(
+          AppConstants.appTitle,
+          style: TextStyle(
+            color: AppColors.textColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: CircleAvatar(
+              radius: 18,
+              backgroundColor: AppColors.greyShade,
+              child: const Icon(Icons.person, color: AppColors.textColor),
+            ),
+          ),
+        ],
+      ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomSearchBar(),
+            CustomSearchBar(
+              allProducts: [
+                {
+                  "title": "Leather Handbag",
+                  "image": "assets/images/bags.png",
+                  "price": "\$49.00",
+                },
+                {
+                  "title": "Necklaces",
+                  "image": "assets/images/Necklaces3.png",
+                  "price": "\$79.00",
+                },
+                {
+                  "title": "Carpets",
+                  "image": "assets/images/Handcraft Carpets2.png",
+                  "price": "\$120.00",
+                },
+                {
+                  "title": "Handmade Carpet",
+                  "image": "assets/images/Handcraft Carpets.png",
+                  "price": "\$120.00",
+                },
+                {
+                  "title": "Gold Necklace",
+                  "image": "assets/images/Necklaces3.png",
+                  "price": "\$60.00",
+                },
+                {
+                  "title": "Diamond Ring",
+                  "image": "assets/images/rings2.png",
+                  "price": "\$150.00",
+                },
+              ],
+            ),
+
             const SizedBox(height: 16),
+
             CategoryList(categories: categories),
             const SizedBox(height: 16),
+
             ImageSlider(
               images: sliderImages,
               onPageChanged: (index) => setState(() => activeIndex = index),
               activeIndex: activeIndex,
             ),
+
             const SizedBox(height: 20),
+
             ProductSection(
               title: "Best Selling Products",
               products: [
@@ -74,12 +142,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ],
             ),
+
             const SizedBox(height: 20),
+
             ProductSection(
               title: "Handcraft Carpets",
               products: [
                 {
-                  "title": "Egyptian Handmade Carpet",
+                  "title": "Handmade Carpet",
                   "image": "assets/images/Handcraft Carpets.png",
                   "price": "\$120.00",
                 },
@@ -95,7 +165,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ],
             ),
+
             const SizedBox(height: 20),
+
             ProductSection(
               title: "Shop Necklaces",
               products: [
@@ -116,7 +188,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ],
             ),
+
             const SizedBox(height: 20),
+
             ProductSection(
               title: "Shop Rings",
               products: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
+import 'package:gradprojectstorio/features/Home/presentation/widgets/product_card.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/page/product_details_view.dart';
 
 class ProductSection extends StatelessWidget {
@@ -34,69 +35,29 @@ class ProductSection extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 8),
+
         SizedBox(
-          height: 200,
-          child: ListView.builder(
+          height: 280,
+          child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: products.length,
+            separatorBuilder: (context, index) => const SizedBox(width: 8),
             itemBuilder: (context, index) {
               final item = products[index];
+
               return GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) {
-                        return ProductDetailsView();
-                      },
+                      builder: (context) => const ProductDetailsView(),
                     ),
                   );
                 },
-                child: Container(
-                  width: 150,
-                  margin: const EdgeInsets.only(right: 12),
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: AppColors.greyShade),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(12),
-                        ),
-                        child: Image.asset(
-                          item["image"]!,
-                          height: 110,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              item["title"]!,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              item["price"]!,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.textColor,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                child: ProductCard(
+                  title: item["title"]!,
+                  image: item["image"]!,
+                  price: item["price"]!,
                 ),
               );
             },

@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
   });
 
   final String title;
+
   final VoidCallback? onTap;
   final bool? newDesign;
 
