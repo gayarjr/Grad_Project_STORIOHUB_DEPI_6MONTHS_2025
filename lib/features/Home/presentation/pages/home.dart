@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gradprojectstorio/core/utils/app_colors.dart';
-import 'package:gradprojectstorio/core/utils/app_constants.dart';
+import 'package:gradprojectstorio/core/widgets/custom_app_bar.dart';
 import 'package:gradprojectstorio/features/Home/presentation/widgets/category_list.dart';
 import 'package:gradprojectstorio/features/Home/presentation/widgets/image_slider.dart';
 import 'package:gradprojectstorio/features/Home/presentation/widgets/product_section.dart';
@@ -39,34 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      appBar: AppBar(
-        backgroundColor: AppColors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.menu, color: AppColors.textColor),
-          onPressed: () {},
-        ),
-        title: const Text(
-          AppConstants.appTitle,
-          style: TextStyle(
-            color: AppColors.textColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: CircleAvatar(
-              radius: 18,
-              backgroundColor: AppColors.greyShade,
-              child: const Icon(Icons.person, color: AppColors.textColor),
-            ),
-          ),
-        ],
-      ),
+      appBar: customAppbar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
