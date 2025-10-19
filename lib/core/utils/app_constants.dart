@@ -6,4 +6,5 @@ class AppConstants {
   static const String profile = "Profile";
   static const String appTitle = "STORIO";
   static const String searchHint = "Search any Product..";
+  static const String publishYourProduct = "Publish Your Product";
 }
