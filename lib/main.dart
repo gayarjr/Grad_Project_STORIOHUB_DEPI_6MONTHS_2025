@@ -1,13 +1,19 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/features/splash/splash_screen.dart';
-
+import 'package:gradprojectstorio/features/Home/presentation/pages/main_nav_screen.dart';
+import 'package:gradprojectstorio/features/Seller/pages/Home_seller_.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+// void main() {
+//   runApp(DevicePreview(builder: (context) => const MyApp()));
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
