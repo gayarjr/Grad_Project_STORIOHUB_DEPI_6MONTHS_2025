@@ -6,13 +6,13 @@ import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/features/Seller/pages/Home_seller_.dart';
 import 'package:gradprojectstorio/features/splash/splash_screen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
 // void main() {
-//   runApp(DevicePreview(builder: (context) => const MyApp()));
+//   runApp(const MyApp());
 // }
+
+void main() {
+  runApp(DevicePreview(builder: (context) => const MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.cairoTextTheme(),
         ),
         title: 'STORIO',
-        home: const SplashScreen(),
+        home: const HomeSeller(),
+        //  SplashScreen(),
         //  HomeSeller(),
       ),
     );

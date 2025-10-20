@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_constants.dart';
+import 'package:gradprojectstorio/features/Seller/pages/view_publish_your_product.dart';
 import 'package:gradprojectstorio/features/Seller/widgets/add_content_text_form_field.dart';
 import 'package:gradprojectstorio/features/Seller/widgets/add_content_text_form_field_another_field.dart';
 
@@ -116,17 +117,27 @@ class PuplishYourProduct extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            Container(
-              width: MediaQuery.of(context).size.width * 0.8, //
-              height: 50,
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor, //
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  AppConstants.publishYourProduct,
-                  style: TextStyle(color: AppColors.white),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ViewPublishYourProduct(),
+                  ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.8, //
+                height: 50,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor, //
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Center(
+                  child: Text(
+                    AppConstants.publishYourProduct,
+                    style: TextStyle(color: AppColors.white),
+                  ),
                 ),
               ),
             ),

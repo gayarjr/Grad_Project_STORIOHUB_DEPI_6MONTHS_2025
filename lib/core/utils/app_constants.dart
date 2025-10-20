@@ -18,4 +18,5 @@ class AppConstants {
   static const String productSize = "Product Size";
   static const String stockAvailability = "Stock Availability";
   static const String availability = "Availability";
+  static const String viewyourpublishproduct = "view your publish product";
 }
