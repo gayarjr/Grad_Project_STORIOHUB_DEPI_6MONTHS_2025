@@ -34,6 +34,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_screenutil: ^5.9.3
+  go_router: ^16.3.0
   smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
@@ -77,10 +78,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
   assets:
     - assets/images/
     - assets/icons/
+    - assets/svgs/
 
   fonts:
     - family: Poppins
@@ -92,3 +93,14 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins-Italic.ttf
           style: italic
+
+
+flutter_assets:
+  assets_path:
+    - assets/images/
+    - assets/svgs/
+    - assets/icons/
+  output_path: lib/core/utils/
+  filename: app_assets.dart
+  field_prefix:
+  classname: AppAssets

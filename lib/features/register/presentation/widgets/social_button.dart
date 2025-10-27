@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
 
 class SocialButton extends StatelessWidget {
   final String text;
@@ -6,7 +8,7 @@ class SocialButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color backgroundColor;
   final Color textColor;
-  final Color? borderColor; // 👈 أضفنا border color
+  final Color? borderColor;
 
   const SocialButton({
     super.key,
@@ -15,7 +17,7 @@ class SocialButton extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor = Colors.white,
     this.textColor = Colors.black,
-    this.borderColor, // 👈
+    this.borderColor,
   });
 
   @override
@@ -26,26 +28,18 @@ class SocialButton extends StatelessWidget {
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
-          elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-            side: BorderSide( // 👈 هنا الإطار
+            borderRadius: BorderRadius.circular(12.w),
+            side: BorderSide(
               color: borderColor ?? Colors.transparent,
               width: 1.2,
             ),
           ),
         ),
-        icon: Image.asset(
-          iconPath,
-          height: 24,
-          width: 24,
-        ),
+        icon: Image.asset(iconPath, height: 24, width: 24),
         label: Text(
           text,
-          style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppStyles.textMedium16.copyWith(color: textColor),
         ),
         onPressed: onPressed,
       ),

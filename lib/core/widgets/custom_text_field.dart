@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
 
 class CustomTextField extends StatelessWidget {
   final String label;
   final String hint;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final TextInputType keyboardType;
 
   const CustomTextField({
     super.key,
     required this.label,
     required this.hint,
-    required this.controller,
+    this.controller,
     this.validator,
+    required this.keyboardType,
   });
 
   @override
@@ -19,19 +23,13 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(color: Colors.grey, fontSize: 14)),
-        const SizedBox(height: 8),
+        Text(label, style: AppStyles.textMedium16),
+        SizedBox(height: 4.h),
         TextFormField(
+          keyboardType: keyboardType,
           controller: controller,
           validator: validator,
-          decoration: InputDecoration(
-            hintText: hint,
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
+          decoration: InputDecoration(hintText: hint),
         ),
       ],
     );

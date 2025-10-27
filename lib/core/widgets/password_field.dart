@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:gradprojectstorio/core/functions/validators.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
 
 class PasswordField extends StatefulWidget {
-  final TextEditingController controller;
-  final String? Function(String?)? validator;
+  final TextEditingController? controller;
+  final String hintText;
+  final String labelText;
 
   const PasswordField({
     super.key,
-    required this.controller,
-    this.validator,
+    this.controller,
+    required this.hintText,
+    required this.labelText,
   });
 
   @override
@@ -22,25 +26,17 @@ class _PasswordFieldState extends State<PasswordField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Password",
-            style: TextStyle(color: Colors.grey, fontSize: 14)),
-        const SizedBox(height: 8),
+        Text(widget.labelText, style: AppStyles.textMedium16),
+        const SizedBox(height: 4),
         TextFormField(
           controller: widget.controller,
           obscureText: !_isPasswordVisible,
-          validator: widget.validator,
+          validator: Validators.password,
           decoration: InputDecoration(
-            hintText: "Enter your password",
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
+            hintText: widget.hintText,
             suffixIcon: IconButton(
               icon: Icon(
-                _isPasswordVisible
-                    ? Icons.visibility
-                    : Icons.visibility_off,
+                _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                 color: Colors.grey,
               ),
               onPressed: () {

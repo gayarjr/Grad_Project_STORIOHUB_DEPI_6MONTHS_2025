@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gradprojectstorio/core/utils/app_colors.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -15,15 +18,13 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56.0,
-      width: double.infinity,
+      height: 56.h,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black,
+          backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(10.r),
           ),
-          elevation: 0,
         ),
         onPressed: onPressed,
         child: Row(
@@ -31,19 +32,11 @@ class CustomButton extends StatelessWidget {
           children: [
             Text(
               text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppStyles.textMedium16.copyWith(color: AppColors.white),
             ),
             if (icon != null) ...[
               const SizedBox(width: 8),
-              Icon(
-                icon,
-                color: Colors.white,
-                size: 20,
-              ),
+              Icon(icon, color: AppColors.white, size: 20),
             ],
           ],
         ),

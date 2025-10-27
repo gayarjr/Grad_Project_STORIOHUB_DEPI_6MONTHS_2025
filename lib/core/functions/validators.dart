@@ -1,4 +1,4 @@
-class Validators {
+abstract class Validators {
   static String? name(String? value) {
     if (value == null || value.trim().isEmpty) {
       return "Please enter your full name";
@@ -13,6 +13,13 @@ class Validators {
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegex.hasMatch(value.trim())) {
       return "Please enter a valid email address";
+    }
+    return null;
+  }
+
+  static String? phone(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return "Please enter your phone number";
     }
     return null;
   }
