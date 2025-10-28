@@ -28,8 +28,20 @@ abstract class AppStyles {
     fontSize: 24.sp,
     fontWeight: FontWeight.w600,
   );
+  static TextStyle textSemiBold20 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle textBold24 = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle textMedium16 = TextStyle(
     fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle textMedium20 = TextStyle(
+    fontSize: 20.sp,
     fontWeight: FontWeight.w500,
   );
   static TextStyle textMedium12 = TextStyle(

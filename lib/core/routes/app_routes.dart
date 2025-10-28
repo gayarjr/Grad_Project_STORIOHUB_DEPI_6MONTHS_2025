@@ -8,4 +8,5 @@ abstract class AppRoutes {
   static const resetPassword = '/resetPassword';
   static const main = '/';
   static const products = '/products';
+  static const productDetails = '/productDetails';
 }

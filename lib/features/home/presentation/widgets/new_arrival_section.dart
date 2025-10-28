@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
+import 'package:gradprojectstorio/features/home/domain/entities/category_entity.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 import 'package:gradprojectstorio/core/widgets/product_card.dart';
 import 'package:gradprojectstorio/features/home/presentation/widgets/title_and_see_all.dart';
@@ -32,6 +33,12 @@ class NewArrivalSection extends StatelessWidget {
           ),
           itemBuilder: (context, index) => ProductCard(
             product: ProductEntity(
+              brand: CategoryEntity(
+                id: '',
+                image:
+                    'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+                name: 'Polo',
+              ),
               id: '',
               images: [],
               imageCover:
