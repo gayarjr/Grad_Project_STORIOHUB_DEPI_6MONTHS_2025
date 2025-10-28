@@ -17,7 +17,7 @@ class ProductDetailsView extends StatelessWidget {
         title: Text('Details', style: AppStyles.textSemiBold24),
         centerTitle: true,
         actions: [
-          IconFavButtom(),
+          IconFavButtom(product: product),
           SizedBox(width: 16.w),
         ],
       ),

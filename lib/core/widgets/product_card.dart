@@ -41,7 +41,11 @@ class ProductCard extends StatelessWidget {
                       Image.asset(AppAssets.imagesTestC, height: 180.h),
                 ),
               ),
-              Positioned(top: 8.h, right: 8.w, child: IconFavButtom()),
+              Positioned(
+                top: 8.h,
+                right: 8.w,
+                child: IconFavButtom(product: product),
+              ),
             ],
           ),
           SizedBox(height: 8.h),
