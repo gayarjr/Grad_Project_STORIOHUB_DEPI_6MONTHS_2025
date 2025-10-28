@@ -4,7 +4,7 @@ import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/core/widgets/custom_button.dart';
 import 'package:gradprojectstorio/core/widgets/password_field.dart';
-import '../../../../core/widgets/custom_text_field.dart';
+import '../../../../core/widgets/custom_text_field_with_label.dart';
 import '../widgets/social_buttons_row.dart';
 import '../widgets/not_or_have_account_text.dart';
 import '../../../../core/functions/validators.dart';
@@ -33,21 +33,21 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                CustomTextField(
+                CustomTextFieldWithLabel(
                   label: "Full Name",
                   hint: "Enter your full name",
                   keyboardType: TextInputType.text,
                   validator: Validators.name,
                 ),
                 SizedBox(height: 16.h),
-                CustomTextField(
+                CustomTextFieldWithLabel(
                   keyboardType: TextInputType.emailAddress,
                   label: "Email",
                   hint: "Enter your email address",
                   validator: Validators.email,
                 ),
                 SizedBox(height: 16.h),
-                CustomTextField(
+                CustomTextFieldWithLabel(
                   keyboardType: TextInputType.phone,
                   label: "Phone",
                   hint: "Enter your phone",

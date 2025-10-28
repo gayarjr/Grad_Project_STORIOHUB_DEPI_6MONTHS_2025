@@ -11,14 +11,20 @@ ThemeData themeApp() {
         borderRadius: BorderRadius.circular(10.r),
         borderSide: const BorderSide(color: AppColors.grey),
       ),
-
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.r),
         borderSide: const BorderSide(color: AppColors.primary, width: 2),
       ),
     ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.white,
+      elevation: 0,
+    ),
     fontFamily: AppStyles.fontFamily,
     scaffoldBackgroundColor: AppColors.white,
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColors.primary,
+      surfaceTint: Colors.transparent,
+    ),
   );
 }

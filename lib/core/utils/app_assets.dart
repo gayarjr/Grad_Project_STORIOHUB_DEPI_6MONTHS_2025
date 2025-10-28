@@ -21,5 +21,9 @@ class AppAssets {
   /// Assets for imagesSplashBg
   /// assets/images/Splash_bg.png
   static const String imagesSplashBg = "assets/images/Splash_bg.png";
+
+  /// Assets for imagesTestC
+  /// assets/images/testC.png
+  static const String imagesTestC = "assets/images/testC.png";
 }
 

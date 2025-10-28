@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextFieldWithLabel extends StatelessWidget {
   final String label;
   final String hint;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType keyboardType;
 
-  const CustomTextField({
+  const CustomTextFieldWithLabel({
     super.key,
     required this.label,
     required this.hint,
