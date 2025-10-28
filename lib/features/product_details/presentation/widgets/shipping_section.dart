@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 
@@ -17,7 +18,7 @@ class ShippingSection extends StatelessWidget {
         SizedBox(height: 12.h),
         Text(
           'Free standard shipping and free 60-day returns.',
-          style: AppStyles.textRegular16,
+          style: AppStyles.textRegular16.copyWith(color: AppColors.grey),
         ),
       ],
     );

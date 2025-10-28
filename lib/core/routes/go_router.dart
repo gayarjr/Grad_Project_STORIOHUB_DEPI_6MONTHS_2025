@@ -6,7 +6,7 @@ import 'package:gradprojectstorio/features/intro/onboarding/presentation/pages/o
 import 'package:gradprojectstorio/features/intro/splash/presentation/pages/splash_page.dart';
 import 'package:gradprojectstorio/features/main/main_view.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
-import 'package:gradprojectstorio/features/register/presentation/pages/register_page.dart';
+import 'package:gradprojectstorio/features/auth/presentation/pages/register_page.dart';
 
 abstract class AppGoRouter {
   static final router = GoRouter(
@@ -29,7 +29,8 @@ abstract class AppGoRouter {
       ),
       GoRoute(
         path: AppRoutes.products,
-        builder: (context, state) => const ProductsView(),
+        builder: (context, state) =>
+            ProductsView(products: state.extra as List<ProductEntity>),
       ),
       GoRoute(
         path: AppRoutes.productDetails,

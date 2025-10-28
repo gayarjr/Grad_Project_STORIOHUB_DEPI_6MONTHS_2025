@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/features/home/presentation/widgets/categories_section.dart';
 import 'package:gradprojectstorio/features/home/presentation/widgets/new_arrival_section.dart';
-import 'package:gradprojectstorio/features/home/presentation/widgets/search_text_field.dart';
+import 'package:gradprojectstorio/core/widgets/search_text_field.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
