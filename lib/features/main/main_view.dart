@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/features/home/presentation/views/home_view.dart';
+import 'package:gradprojectstorio/features/search_tab/presentation/views/Search_View.dart';
 import 'package:gradprojectstorio/features/watchlist/presentation/views/wishlist_view.dart';
 
 class MainView extends StatefulWidget {
@@ -16,7 +17,7 @@ class MainViewState extends State<MainView> {
 
   List<Widget> get _pages => [
     const HomeView(),
-    Center(child: Text('Search', style: AppStyles.textRegular16)),
+    SearchView(),
     WishlistView(),
     Center(child: Text('Cart', style: AppStyles.textRegular16)),
     Center(child: Text('Profile', style: AppStyles.textRegular16)),
