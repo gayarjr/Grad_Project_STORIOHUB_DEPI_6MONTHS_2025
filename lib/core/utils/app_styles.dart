@@ -60,4 +60,5 @@ abstract class AppStyles {
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle textRegular15 = TextStyle(fontWeight: FontWeight.bold);
 }

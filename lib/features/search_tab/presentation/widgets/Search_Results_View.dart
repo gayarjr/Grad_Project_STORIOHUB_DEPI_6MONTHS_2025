@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gradprojectstorio/core/utils/app_colors.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
 
 class SearchResultsView extends StatelessWidget {
   final List<Map<String, dynamic>> products;
@@ -28,7 +30,8 @@ class SearchResultsView extends StatelessWidget {
           ),
           title: Text(
             product['name'],
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: AppStyles.textRegular15,
+            // TextStyle(fontWeight: FontWeight.bold),
           ),
           subtitle: Row(
             children: [
@@ -37,7 +40,7 @@ class SearchResultsView extends StatelessWidget {
                 const SizedBox(width: 6),
                 Text(
                   "-${product['discount']}",
-                  style: const TextStyle(color: Colors.red),
+                  style: const TextStyle(color: AppColors.red),
                 ),
               ],
             ],
