@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gradprojectstorio/features/New_Address/presentation/views/address_page.dart';
 
 import '../../domain/entities/cart_item.dart';
 import '../../presentation/cubit/checkout_cubit.dart';
@@ -114,6 +115,29 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     ),
                                   ),
                                   TextButton(
+                                    onPressed: () async {
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AddressPage(),
+                                        ),
+                                      );
+                                      setState(() {
+                                        _showAddresses = false;
+                                      });
+                                    },
+                                    child: Text(
+                                      'Change',
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
+                                        decoration: TextDecoration.underline,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  /*
+                                  TextButton(
                                     onPressed: () {
                                       setState(() {
                                         _showAddresses = !_showAddresses;
@@ -127,7 +151,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                         color: Colors.black,
                                       ),
                                     ),
-                                  ),
+                                  ),*/
                                 ],
                               ),
                             ),
