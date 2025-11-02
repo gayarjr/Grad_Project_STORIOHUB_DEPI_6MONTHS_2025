@@ -7,6 +7,8 @@ import 'package:gradprojectstorio/features/intro/splash/presentation/pages/splas
 import 'package:gradprojectstorio/features/main/main_view.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
 import 'package:gradprojectstorio/features/auth/presentation/pages/register_page.dart';
+import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
+import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_pages_withouts_data.dart';
 
 abstract class AppGoRouter {
   static final router = GoRouter(
@@ -36,6 +38,15 @@ abstract class AppGoRouter {
         path: AppRoutes.productDetails,
         builder: (context, state) =>
             ProductDetailsView(product: state.extra as ProductEntity),
+      ),
+
+      GoRoute(
+        path: AppRoutes.myordersettings,
+        builder: (context, state) => MyOrdersScreenWithoutData(),
+      ),
+      GoRoute(
+        path: AppRoutes.anothermyordersettingsdata,
+        builder: (context, state) => MyOrder(),
       ),
     ],
   );

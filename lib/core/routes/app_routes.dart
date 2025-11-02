@@ -9,4 +9,6 @@ abstract class AppRoutes {
   static const main = '/';
   static const products = '/products';
   static const productDetails = '/productDetails';
+  static const myordersettings = '/myordersettings';
+  static const anothermyordersettingsdata = '/myordersettings';
 }
