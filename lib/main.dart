@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,7 @@ void main() async {
   Hive.registerAdapter(ProductEntityAdapter());
   Hive.registerAdapter(CategoryEntityAdapter());
   await Hive.openBox<ProductEntity>('watchlist');
-  runApp(const Storio());
+  runApp(DevicePreview(builder: (context) => const Storio()));
 }
 
 class Storio extends StatelessWidget {
