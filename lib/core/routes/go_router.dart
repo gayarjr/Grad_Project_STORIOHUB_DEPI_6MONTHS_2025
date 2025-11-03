@@ -6,7 +6,7 @@ import 'package:gradprojectstorio/features/intro/onboarding/presentation/pages/o
 import 'package:gradprojectstorio/features/intro/splash/presentation/pages/splash_page.dart';
 import 'package:gradprojectstorio/features/main/main_view.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
-import 'package:gradprojectstorio/features/auth/presentation/pages/register_page.dart';
+import 'package:gradprojectstorio/features/auth/presentation/views/register_page.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_pages_withouts_data.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_pages_withouts_data.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
