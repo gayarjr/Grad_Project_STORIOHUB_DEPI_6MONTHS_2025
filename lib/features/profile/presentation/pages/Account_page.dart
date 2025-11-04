@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
-
+import 'package:gradprojectstorio/features/profile/presentation/pages/my_details.dart';
+import 'package:gradprojectstorio/features/profile/presentation/pages/change_password.dart';
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
 
@@ -31,7 +32,12 @@ class AccountScreen extends StatelessWidget {
             leading: Image.asset("/icons/mydetails.png", width: 20, height: 20),
             title: const Text('My Details'),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyDetails()),
+              );
+            },
           ),
           const Divider(),
           ListTile(
@@ -42,7 +48,12 @@ class AccountScreen extends StatelessWidget {
             ),
             title: const Text('Change Password'),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () {},
+            onTap: () {
+             Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => changePassword()),
+              );
+            },
           ),
           const Divider(),
           ListTile(

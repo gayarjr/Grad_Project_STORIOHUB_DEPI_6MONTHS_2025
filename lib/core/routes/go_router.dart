@@ -8,13 +8,14 @@ import 'package:gradprojectstorio/features/intro/splash/presentation/pages/splas
 import 'package:gradprojectstorio/features/main/main_view.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
+import 'package:gradprojectstorio/features/profile/presentation/pages/my_details.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_pages_withouts_data.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
 
 abstract class AppGoRouter {
   static final router = GoRouter(
-    initialLocation: AppRoutes.splash,
+    initialLocation: AppRoutes.main,
     routes: <GoRoute>[
       GoRoute(
         path: AppRoutes.splash,
@@ -53,6 +54,12 @@ abstract class AppGoRouter {
         path: AppRoutes.anothermyordersettingsdata,
         builder: (context, state) => MyOrder(),
       ),
+
+      GoRoute(
+        path: AppRoutes.myDetails,
+        builder: (context, state) => const MyDetails(),
+      ),
+
     ],
   );
 }
