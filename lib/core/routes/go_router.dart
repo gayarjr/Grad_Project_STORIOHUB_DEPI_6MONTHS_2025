@@ -10,6 +10,8 @@ import 'package:gradprojectstorio/features/product_details/presentation/views/pr
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_pages_withouts_data.dart';
 
+import '../../features/auth/presentation/views/login_view.dart';
+
 abstract class AppGoRouter {
   static final router = GoRouter(
     initialLocation: AppRoutes.splash,
@@ -22,6 +24,8 @@ abstract class AppGoRouter {
         path: AppRoutes.onboarding,
         builder: (context, state) => const OnboardingPage(),
       ),
+      GoRoute(path: AppRoutes.login, builder: (context, state) => LoginView()),
+
       GoRoute(
         path: AppRoutes.register,
         builder: (context, state) => RegisterPage(),

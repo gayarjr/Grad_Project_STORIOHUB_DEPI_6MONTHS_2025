@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/core/widgets/custom_button.dart';
 import 'package:gradprojectstorio/core/widgets/password_field.dart';
 
 import '../../../../core/functions/validators.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/widgets/custom_text_field_with_label.dart';
 import '../../cubit/register_cubit.dart';
 import '../../cubit/register_states.dart';
@@ -49,11 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("✅ Registered Successfully")),
             );
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => LoginView()),
-              (route) => false,
-            );
+            context.go(AppRoutes.login);
           }
 
           if (state is RegisterErrorState) {
