@@ -1,17 +1,18 @@
 import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
+import 'package:gradprojectstorio/features/auth/presentation/views/register_page.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 import 'package:gradprojectstorio/features/home/presentation/views/products_view.dart';
 import 'package:gradprojectstorio/features/intro/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:gradprojectstorio/features/intro/splash/presentation/pages/splash_page.dart';
 import 'package:gradprojectstorio/features/main/main_view.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
-import 'package:gradprojectstorio/features/auth/presentation/views/register_page.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_pages_withouts_data.dart';
 
 abstract class AppGoRouter {
   static final router = GoRouter(
+    initialLocation: AppRoutes.splash,
     routes: <GoRoute>[
       GoRoute(
         path: AppRoutes.splash,
@@ -23,7 +24,7 @@ abstract class AppGoRouter {
       ),
       GoRoute(
         path: AppRoutes.register,
-        builder: (context, state) => const RegisterPage(),
+        builder: (context, state) => RegisterPage(),
       ),
       GoRoute(
         path: AppRoutes.main,

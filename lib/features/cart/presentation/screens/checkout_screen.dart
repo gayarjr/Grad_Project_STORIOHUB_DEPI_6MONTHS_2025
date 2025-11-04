@@ -54,12 +54,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             color: Colors.black,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: BlocConsumer<CheckoutCubit, CheckoutState>(
         listener: (context, state) {
@@ -136,22 +130,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                       ),
                                     ),
                                   ),
-                                  /*
-                                  TextButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _showAddresses = !_showAddresses;
-                                      });
-                                    },
-                                    child: Text(
-                                      'Change',
-                                      style: TextStyle(
-                                        fontSize: 16.sp,
-                                        decoration: TextDecoration.underline,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),*/
                                 ],
                               ),
                             ),
@@ -179,53 +157,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   },
                                 );
                               }).toList(),
-                            SizedBox(height: 24.h),
-                            // Payment Method Section
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 16.w),
-                              child: Text(
-                                'Payment Method',
-                                style: TextStyle(
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 12.h),
-                            Container(
-                              margin: EdgeInsets.symmetric(horizontal: 16.w),
-                              padding: EdgeInsets.all(16.r),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(12.r),
-                                border: Border.all(color: Colors.grey[300]!),
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.credit_card,
-                                    size: 32.r,
-                                    color: Colors.grey[600],
-                                  ),
-                                  SizedBox(width: 12.w),
-                                  Text(
-                                    'Credit Card',
-                                    style: TextStyle(
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: 16.r,
-                                    color: Colors.grey[600],
-                                  ),
-                                ],
-                              ),
-                            ),
                             SizedBox(height: 24.h),
                             // Shipping Fee
                             Padding(
@@ -274,74 +205,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                       fontSize: 24.sp,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 24.h),
-                            // Promo Code
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 16.w),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      height: 56.h,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[100],
-                                        borderRadius: BorderRadius.circular(
-                                          12.r,
-                                        ),
-                                      ),
-                                      child: TextField(
-                                        controller: _promoController,
-                                        decoration: InputDecoration(
-                                          hintText: 'Enter promo code',
-                                          hintStyle: TextStyle(
-                                            fontSize: 16.sp,
-                                            color: Colors.grey[500],
-                                          ),
-                                          prefixIcon: Icon(
-                                            Icons.local_offer_outlined,
-                                            color: Colors.grey[600],
-                                            size: 24.r,
-                                          ),
-                                          border: InputBorder.none,
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 16.w,
-                                            vertical: 16.h,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 12.w),
-                                  Container(
-                                    height: 56.h,
-                                    width: 80.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(12.r),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        if (_promoController.text.isNotEmpty) {
-                                          context
-                                              .read<CheckoutCubit>()
-                                              .applyPromoCode(
-                                                _promoController.text,
-                                              );
-                                        }
-                                      },
-                                      child: Text(
-                                        'Add',
-                                        style: TextStyle(
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                      ),
                                     ),
                                   ),
                                 ],

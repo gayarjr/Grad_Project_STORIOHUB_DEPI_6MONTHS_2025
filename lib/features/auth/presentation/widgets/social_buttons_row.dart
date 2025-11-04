@@ -12,13 +12,13 @@ class SocialButtonsRow extends StatelessWidget {
       children: [
         SocialButton(
           text: 'Login with Google',
-          iconPath: 'assets/images/google_icon.png',
+          iconPath: 'assets/icons/logos_google-icon.png',
           onPressed: () {},
         ),
         SizedBox(height: 16.h),
         SocialButton(
           text: 'Login with Facebook',
-          iconPath: 'assets/images/facebook_icon.png',
+          iconPath: 'assets/icons/logos_facebook.png',
           onPressed: () {},
           textColor: AppColors.facebookColor,
         ),
