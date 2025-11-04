@@ -23,25 +23,44 @@ class SocialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56,
+      height: 56.h,
       width: double.infinity,
-      child: ElevatedButton.icon(
+      child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.w),
+            borderRadius: BorderRadius.circular(12.r),
             side: BorderSide(
               color: borderColor ?? Colors.transparent,
               width: 1.2,
             ),
           ),
         ),
-        icon: Image.asset(iconPath, height: 24, width: 24),
-        label: Text(
-          text,
-          style: AppStyles.textMedium16.copyWith(color: textColor),
-        ),
         onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              iconPath,
+              height: 24.h,
+              width: 24.w,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.error, size: 24.h);
+              },
+            ),
+            SizedBox(width: 12.w),
+            Flexible(
+              child: Text(
+                text,
+                style: AppStyles.textMedium16.copyWith(color: textColor),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
