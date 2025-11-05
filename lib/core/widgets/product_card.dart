@@ -32,6 +32,7 @@ class ProductCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ClipRRect(
+              clipBehavior: Clip.antiAlias,
               borderRadius: BorderRadius.circular(10.r),
               child: AspectRatio(
                 aspectRatio: 1,
@@ -49,40 +50,18 @@ class ProductCard extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      errorWidget: (context, url, error) =>
-                          Image.asset(AppAssets.imagesTestC, fit: BoxFit.cover),
+                      errorWidget: (context, url, error) => Skeletonizer(
+                        enabled: true,
+                        child: Image.asset(
+                          AppAssets.imagesTestC,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-
                     Positioned(
                       top: 8.h,
                       right: 8.w,
                       child: IconFavButtom(product: product),
-                    ),
-
-                    Positioned(
-                      bottom: 8.h,
-                      right: 8.w,
-                      child: GestureDetector(
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text("${product.title} added to cart!"),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(6.w),
-                          decoration: BoxDecoration(
-                            color: AppColors.primary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.shopping_cart,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        ),
-                      ),
                     ),
                   ],
                 ),
