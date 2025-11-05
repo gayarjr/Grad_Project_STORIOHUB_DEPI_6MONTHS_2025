@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/functions/navigate_to_tab.dart';
+import 'package:gradprojectstorio/core/widgets/search_text_field.dart';
 import 'package:gradprojectstorio/features/home/presentation/widgets/categories_section.dart';
 import 'package:gradprojectstorio/features/home/presentation/widgets/new_arrival_section.dart';
-import 'package:gradprojectstorio/core/widgets/search_text_field.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -19,14 +19,12 @@ class HomeViewBody extends StatelessWidget {
             SizedBox(height: 12.h),
             SearchTextField(
               readOnly: true,
-              onTap: () {
-                navigateToTab(context, 1);
-              },
+              onTap: () => navigateToTab(context, 1),
             ),
             SizedBox(height: 24.h),
-            CategoriesSection(),
+            const CategoriesSection(),
             SizedBox(height: 24.h),
-            NewArrivalSection(),
+            const NewArrivalSection(),
             SizedBox(height: 16.h),
           ],
         ),

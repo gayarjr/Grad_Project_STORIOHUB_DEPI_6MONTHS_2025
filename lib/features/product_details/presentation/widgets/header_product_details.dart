@@ -20,18 +20,25 @@ class HeaderProductDetails extends StatelessWidget {
         Text(product.title, style: AppStyles.textSemiBold24),
         SizedBox(height: 12.h),
         Row(
-          spacing: 4.w,
           children: [
             Icon(Icons.star, color: Colors.yellow, size: 18.sp),
-            Text(
-              '${product.rating}/5',
-              style: AppStyles.textMedium16.copyWith(
-                decoration: TextDecoration.underline,
+            SizedBox(width: 4.w),
+            Flexible(
+              child: Text(
+                '${product.ratingsAverage}/5',
+                style: AppStyles.textMedium16.copyWith(
+                  decoration: TextDecoration.underline,
+                ),
+                overflow: TextOverflow.ellipsis,
               ),
             ),
-            Text(
-              '(${product.ratingCount} reviews)',
-              style: AppStyles.textMedium16.copyWith(color: AppColors.grey),
+            SizedBox(width: 4.w),
+            Flexible(
+              child: Text(
+                '(${product.ratingsQuantity} reviews)',
+                style: AppStyles.textMedium16.copyWith(color: AppColors.grey),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

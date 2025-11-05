@@ -39,12 +39,12 @@ abstract class AppGoRouter {
         builder: (context, state) =>
             ProductsView(products: state.extra as List<ProductEntity>),
       ),
+
       GoRoute(
         path: AppRoutes.productDetails,
         builder: (context, state) =>
             ProductDetailsView(product: state.extra as ProductEntity),
       ),
-
       GoRoute(
         path: AppRoutes.myordersettings,
         builder: (context, state) => MyOrdersScreenWithoutData(),

@@ -14,11 +14,17 @@ class ShippingSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Shipping & Returns', style: AppStyles.textSemiBold20),
-        SizedBox(height: 12.h),
+        Text(
+          'Shipping & Returns',
+          style: AppStyles.textSemiBold20.copyWith(color: Colors.black87),
+        ),
+        SizedBox(height: 8.h),
         Text(
           'Free standard shipping and free 60-day returns.',
-          style: AppStyles.textRegular16.copyWith(color: AppColors.grey),
+          style: AppStyles.textRegular16.copyWith(
+            color: AppColors.grey,
+            height: 1.5,
+          ),
         ),
       ],
     );
