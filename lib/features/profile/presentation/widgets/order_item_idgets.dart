@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/order_details.dart';
 
 class OrderItemWidget extends StatelessWidget {
   final String orderNumber;

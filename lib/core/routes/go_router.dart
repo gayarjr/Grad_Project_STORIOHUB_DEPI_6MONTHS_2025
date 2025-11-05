@@ -1,6 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
+import 'package:gradprojectstorio/features/auth/presentation/views/forgot_password_view.dart';
+import 'package:gradprojectstorio/features/auth/presentation/views/otp_view.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/register_page.dart';
+import 'package:gradprojectstorio/features/auth/presentation/views/reset_password_view.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 import 'package:gradprojectstorio/features/home/presentation/views/products_view.dart';
 import 'package:gradprojectstorio/features/intro/onboarding/presentation/pages/onboarding_page.dart';
@@ -25,10 +28,22 @@ abstract class AppGoRouter {
         builder: (context, state) => const OnboardingPage(),
       ),
       GoRoute(path: AppRoutes.login, builder: (context, state) => LoginView()),
-
       GoRoute(
         path: AppRoutes.register,
         builder: (context, state) => RegisterPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.forgetPassword,
+        builder: (context, state) => ForgotPasswordView(),
+      ),
+      GoRoute(
+        path: AppRoutes.otp,
+        builder: (context, state) => OtpView(email: state.extra as String),
+      ),
+      GoRoute(
+        path: AppRoutes.resetPassword,
+        builder: (context, state) =>
+            ResetPasswordView(email: state.extra as String),
       ),
       GoRoute(
         path: AppRoutes.main,

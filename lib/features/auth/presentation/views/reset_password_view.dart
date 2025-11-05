@@ -1,131 +1,98 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gradprojectstorio/core/functions/validators.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
-import 'package:gradprojectstorio/core/widgets/auth_button.dart';
-import 'package:gradprojectstorio/core/widgets/text_form_field_with_icon.dart';
+import 'package:gradprojectstorio/core/widgets/custom_button.dart';
+import 'package:gradprojectstorio/core/widgets/custom_snack_bar.dart';
+import 'package:gradprojectstorio/core/widgets/password_field.dart';
 
 class ResetPasswordView extends StatefulWidget {
-  const ResetPasswordView({super.key});
+  const ResetPasswordView({super.key, required this.email});
+
+  final String email;
 
   @override
   State<ResetPasswordView> createState() => _ResetPasswordViewState();
 }
 
 class _ResetPasswordViewState extends State<ResetPasswordView> {
-  void _resetPassword() {
-    setState(() {});
-    _showSuccessDialog();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late TextEditingController _passController, _confirmPassController;
+
+  @override
+  void initState() {
+    _passController = TextEditingController();
+    _confirmPassController = TextEditingController();
+    super.initState();
   }
 
-  void _showSuccessDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.r),
-          ),
-          child: Container(
-            padding: EdgeInsets.all(24.w),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(20.r),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircleAvatar(
-                  radius: 30.r,
-                  backgroundColor: Colors.green.shade50,
-                  child: Icon(
-                    Icons.check_circle_outline,
-                    color: Colors.green.shade600,
-                    size: 40.r,
-                  ),
-                ),
-                SizedBox(height: 16.h),
-                Text(
-                  'Password Changed!',
-                  style: AppStyles.textBold16.copyWith(
-                    color: AppColors.primary,
-                  ),
-                ),
-                SizedBox(height: 8.h),
-                Text(
-                  'Your can now use your new password to login to your account.',
-                  textAlign: TextAlign.center,
-                  style: AppStyles.textRegular14.copyWith(
-                    color: AppColors.grey,
-                  ),
-                ),
-                SizedBox(height: 24.h),
-                AuthButton(
-                  text: 'Login',
-                  onTap: () {
-                    // Pop dialog, then navigate back to login
-                    Navigator.of(context).pop();
-                    context.go(AppRoutes.login);
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+  @override
+  void dispose() {
+    _passController.dispose();
+    _confirmPassController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: AppColors.primary),
-          onPressed: () => context.pop(),
-        ),
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Reset Password',
-              style: AppStyles.textBold24.copyWith(color: AppColors.primary),
-            ),
-            SizedBox(height: 8.h),
-            Text(
-              "Set the new password for your account so you can login and access all the features.",
-              style: AppStyles.textRegular16.copyWith(color: AppColors.grey),
-            ),
-            SizedBox(height: 32.h),
-
-            // New Password Field
-            const TextFormFieldWithIcon(
-              hintText: 'Enter new password',
-              label: 'New Password',
-              icon: Icons.lock_outline,
-              isPassword: true,
-            ),
-            SizedBox(height: 20.h),
-
-            // Confirm Password Field
-            const TextFormFieldWithIcon(
-              hintText: 'Confirm new password',
-              label: 'Confirm Password',
-              icon: Icons.lock_outline,
-              isPassword: true,
-            ),
-            SizedBox(height: 40.h),
-
-            // Continue Button
-            AuthButton(text: 'Continue', onTap: _resetPassword),
-            SizedBox(height: 20.h),
-          ],
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Reset Password', style: AppStyles.textSemiBold32),
+              SizedBox(height: 8.h),
+              Text(
+                "Set the new password for your account so you can login and access all the features.",
+                style: AppStyles.textRegular16.copyWith(color: AppColors.grey),
+              ),
+              SizedBox(height: 24.h),
+              PasswordField(
+                labelText: "New Password",
+                hintText: 'Enter your new password',
+                controller: _passController,
+                validator: Validators.password,
+              ),
+              SizedBox(height: 16.h),
+              PasswordField(
+                controller: _confirmPassController,
+                labelText: "Confirm Password",
+                hintText: 'Confirm your password',
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please confirm your password';
+                  }
+                  if (value != _passController.text) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 32.h),
+              CustomButton(
+                text: 'Reset Password',
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    customSnackBar(
+                      context,
+                      message: 'Password reset successfully',
+                      type: AnimatedSnackBarType.success,
+                    );
+                    formKey.currentState!.save();
+                    context.go(AppRoutes.login);
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

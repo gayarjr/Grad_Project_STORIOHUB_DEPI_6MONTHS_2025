@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
-import 'success_dialog.dart';
+import 'package:gradprojectstorio/features/address/presentation/widgets/Success_Dialog.dart';
 
 class AddNewAddressSheet extends StatefulWidget {
   final Function(Map<String, dynamic>) onAdd;
 
-  const AddNewAddressSheet({Key? key, required this.onAdd}) : super(key: key);
+  const AddNewAddressSheet({super.key, required this.onAdd});
 
   @override
   State<AddNewAddressSheet> createState() => _AddNewAddressSheetState();
