@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-/*part of 'category_entity.dart';
+part of 'category_entity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -18,8 +18,8 @@ class CategoryEntityAdapter extends TypeAdapter<CategoryEntity> {
     };
     return CategoryEntity(
       id: fields[0] as String,
-      image: fields[1] as String,
-      name: fields[2] as String,
+      name: fields[1] as String,
+      image: fields[2] as String,
     );
   }
 
@@ -30,9 +30,9 @@ class CategoryEntityAdapter extends TypeAdapter<CategoryEntity> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.image)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.name);
+      ..write(obj.image);
   }
 
   @override
@@ -44,4 +44,4 @@ class CategoryEntityAdapter extends TypeAdapter<CategoryEntity> {
       other is CategoryEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
-}*/
+}

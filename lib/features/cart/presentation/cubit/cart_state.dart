@@ -17,7 +17,8 @@ class CartLoaded extends CartState {
     required this.itemCount,
   });
 
-  double get subtotal => items.fold(0, (sum, item) => sum + (item.price * item.quantity));
+  double get subtotal =>
+      items.fold(0, (sum, item) => sum + (item.price * item.quantity));
 }
 
 class CartError extends CartState {

@@ -40,6 +40,3 @@ class CheckoutError extends CheckoutState {
   final String message;
   CheckoutError(this.message);
 }
-
-
-

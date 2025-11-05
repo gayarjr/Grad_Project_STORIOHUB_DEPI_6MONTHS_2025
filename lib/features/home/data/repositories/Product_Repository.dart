@@ -1,13 +1,14 @@
-import 'package:gradprojectstorio/core/network/api_service.dart';
+import 'package:dio/dio.dart';
+import 'package:gradprojectstorio/core/services/api_service.dart';
+import 'package:gradprojectstorio/features/home/data/models/product_response/product_response.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
-import 'package:gradprojectstorio/features/home/models/product_model.dart';
 
 class ProductRepository {
-  final ApiService apiService = ApiService(); // ✅ استخدميه مباشرة
+  ApiService apiService = ApiService(Dio());
 
   Future<List<ProductEntity>> getAllProducts() async {
-    final response = await apiService.get(endpoint: '/api/v1/products');
+    final response = await apiService.get(endPoint: '/products');
     final List<dynamic> data = response['data'];
-    return data.map((e) => ProductModel.fromJson(e)).toList();
+    return data.map((e) => ProductResponse.fromJson(e).toEntity()).toList();
   }
 }

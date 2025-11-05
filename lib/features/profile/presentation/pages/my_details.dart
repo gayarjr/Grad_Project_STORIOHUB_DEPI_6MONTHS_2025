@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/widgets/custom_button.dart';
-import 'package:gradprojectstorio/core/utils/app_colors.dart';
-import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/core/widgets/custom_text_field_with_label.dart';
 
 class MyDetails extends StatelessWidget {
@@ -22,10 +20,7 @@ class MyDetails extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Container(
-              height: 1,
-              color: Colors.grey[300],
-            ),
+            child: Container(height: 1, color: Colors.grey[300]),
           ),
           Expanded(
             child: SafeArea(
@@ -66,6 +61,3 @@ class MyDetails extends StatelessWidget {
     );
   }
 }
-
-
-

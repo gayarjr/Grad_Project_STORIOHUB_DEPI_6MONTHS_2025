@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/my_details.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/change_password.dart';
+import 'package:go_router/go_router.dart';
+import 'package:gradprojectstorio/core/routes/app_routes.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
+
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
 
@@ -9,89 +10,82 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Account'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
+        centerTitle: true,
+        title: Text('Account', style: AppStyles.textSemiBold24),
       ),
       body: ListView(
         children: [
-          ListTile(
-            leading: Image.asset("icons/myorder.png", width: 20, height: 20),
-            title: const Text('My Orders'),
-            trailing: const Icon(Icons.chevron_right),
+          const Divider(),
+          ProfileItem(
+            icon: Icons.list_alt_outlined,
+            title: 'My Orders',
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyOrder()),
-              );
+              context.push(AppRoutes.order);
             },
           ),
           const Divider(),
-          ListTile(
-            leading: Image.asset("/icons/mydetails.png", width: 20, height: 20),
-            title: const Text('My Details'),
-            trailing: const Icon(Icons.chevron_right),
+          ProfileItem(
+            icon: Icons.person_outline,
+            title: 'Edit Profile',
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyDetails()),
-              );
+              context.push(AppRoutes.editProfile);
             },
           ),
           const Divider(),
-          ListTile(
-            leading: Image.asset(
-              "icons/changepassowordandaddressbook.png",
-              width: 20,
-              height: 20,
-            ),
-            title: const Text('Change Password'),
-            trailing: const Icon(Icons.chevron_right),
+          ProfileItem(
+            icon: Icons.lock_outline,
+            title: 'Change Password',
             onTap: () {
-             Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => changePassword()),
-              );
+              context.push(AppRoutes.changePassword);
             },
           ),
           const Divider(),
-          ListTile(
-            leading: Image.asset(
-              "icons/changepassowordandaddressbook.png",
-              width: 20,
-              height: 20,
-            ),
-            title: const Text('Address Book'),
-            trailing: const Icon(Icons.chevron_right),
+          ProfileItem(
+            icon: Icons.home_outlined,
+            title: 'Address Book',
             onTap: () {},
           ),
           const Divider(),
-          ListTile(
-            leading: Image.asset("icons/FAQS.png", width: 20, height: 20),
-            title: const Text('FAQs'),
-            trailing: const Icon(Icons.chevron_right),
+          ProfileItem(
+            icon: Icons.question_answer_outlined,
+            title: 'Help Center',
             onTap: () {},
           ),
           const Divider(),
           ListTile(
             leading: Image.asset(
-              "/icons/Helpcenter.png",
+              "assets/icons/logout2.png",
               width: 20,
               height: 20,
             ),
-            title: const Text('Help Center'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {},
-          ),
-          const Divider(),
-          ListTile(
-            leading: Image.asset("icons/logout2.png", width: 20, height: 20),
             title: const Text('Logout', style: TextStyle(color: Colors.red)),
             onTap: () {},
           ),
         ],
       ),
+    );
+  }
+}
+
+class ProfileItem extends StatelessWidget {
+  const ProfileItem({
+    super.key,
+    required this.title,
+    required this.onTap,
+    required this.icon,
+  });
+
+  final IconData icon;
+  final String title;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title, style: AppStyles.textRegular16),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: onTap,
     );
   }
 }

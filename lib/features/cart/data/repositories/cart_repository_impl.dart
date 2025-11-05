@@ -37,8 +37,8 @@ class CartRepositoryImpl implements CartRepository {
     await Future.delayed(const Duration(milliseconds: 300));
 
     // Check if item already exists in cart
-    final existingIndex = _cartItems.indexWhere((cartItem) =>
-    cartItem.id == item.id && cartItem.size == item.size
+    final existingIndex = _cartItems.indexWhere(
+      (cartItem) => cartItem.id == item.id && cartItem.size == item.size,
     );
 
     if (existingIndex != -1) {

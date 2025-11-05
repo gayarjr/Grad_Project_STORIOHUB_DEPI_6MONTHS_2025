@@ -63,24 +63,23 @@ abstract class AppGoRouter {
             ProductDetailsView(product: state.extra as ProductEntity),
       ),
       GoRoute(
-        path: AppRoutes.myordersettings,
+        path: AppRoutes.order,
         builder: (context, state) => MyOrdersScreenWithoutData(),
       ),
       GoRoute(
-        path: AppRoutes.anothermyordersettingsdata,
+        path: AppRoutes.orderDetails,
         builder: (context, state) => MyOrder(),
       ),
 
       GoRoute(
-        path: AppRoutes.myDetails,
+        path: AppRoutes.editProfile,
         builder: (context, state) => const MyDetails(),
       ),
 
       GoRoute(
-        path: AppRoutes.myDetails,
-        builder: (context, state) => const changePassword(),
+        path: AppRoutes.editProfile,
+        builder: (context, state) => const ChangePassword(),
       ),
-
     ],
   );
 }

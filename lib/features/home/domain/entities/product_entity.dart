@@ -1,15 +1,27 @@
 import 'package:gradprojectstorio/features/home/domain/entities/category_entity.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+part 'product_entity.g.dart';
+
+@HiveType(typeId: 0)
 class ProductEntity {
+  @HiveField(0)
   final String id;
+  @HiveField(1)
   final String title;
+  @HiveField(2)
   final String description;
-  final double price;
+  @HiveField(3)
+  final num price;
+  @HiveField(4)
   final String imageCover;
-  final List<String> images;
-  final double ratingsAverage;
-  final int ratingsQuantity;
-  final CategoryEntity category;
+  @HiveField(5)
+  final List<dynamic> images;
+  @HiveField(6)
+  final num ratingsAverage;
+  @HiveField(7)
+  final num ratingsQuantity;
+  @HiveField(8)
   final CategoryEntity brand;
 
   ProductEntity({
@@ -21,7 +33,6 @@ class ProductEntity {
     required this.images,
     required this.ratingsAverage,
     required this.ratingsQuantity,
-    required this.category,
     required this.brand,
   });
 }

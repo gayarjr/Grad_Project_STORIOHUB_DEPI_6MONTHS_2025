@@ -9,8 +9,8 @@ abstract class AppRoutes {
   static const main = '/main';
   static const products = '/products';
   static const productDetails = '/productDetails';
-  static const myordersettings = '/myordersettings';
-  static const anothermyordersettingsdata = '/myordersettings/details';
-  static const myDetails = '/mydetails';
-  static const changePassword = '/changepassword';
+  static const order = '/order';
+  static const orderDetails = '/orderDetails';
+  static const editProfile = '/editProfile';
+  static const changePassword = '/changePassword';
 }

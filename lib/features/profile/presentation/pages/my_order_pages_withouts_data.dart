@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gradprojectstorio/core/utils/app_assets.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
 
 class MyOrdersScreenWithoutData extends StatelessWidget {
   const MyOrdersScreenWithoutData({super.key});
@@ -7,16 +9,14 @@ class MyOrdersScreenWithoutData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Orders'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
+        centerTitle: true,
+        title: Text('My Orders', style: AppStyles.textSemiBold24),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("icons/npOngoingOrders.png", width: 60, height: 60),
+            Image.asset(AppAssets.iconsNpOngoingOrders, width: 60, height: 60),
             const SizedBox(height: 16),
             const Text(
               'No Ongoing Orders!',

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-/*part of 'product_entity.dart';
+part of 'product_entity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -17,15 +17,15 @@ class ProductEntityAdapter extends TypeAdapter<ProductEntity> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ProductEntity(
-      brand: fields[8] as CategoryEntity,
       id: fields[0] as String,
-      imageCover: fields[1] as String,
-      images: (fields[2] as List).cast<String>(),
-      title: fields[3] as String,
-      description: fields[4] as String,
-      price: fields[5] as num,
-      rating: fields[6] as num,
-      ratingCount: fields[7] as num,
+      title: fields[1] as String,
+      description: fields[2] as String,
+      price: fields[3] as num,
+      imageCover: fields[4] as String,
+      images: (fields[5] as List).cast<dynamic>(),
+      ratingsAverage: fields[6] as num,
+      ratingsQuantity: fields[7] as num,
+      brand: fields[8] as CategoryEntity,
     );
   }
 
@@ -36,19 +36,19 @@ class ProductEntityAdapter extends TypeAdapter<ProductEntity> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.imageCover)
-      ..writeByte(2)
-      ..write(obj.images)
-      ..writeByte(3)
       ..write(obj.title)
-      ..writeByte(4)
+      ..writeByte(2)
       ..write(obj.description)
-      ..writeByte(5)
+      ..writeByte(3)
       ..write(obj.price)
+      ..writeByte(4)
+      ..write(obj.imageCover)
+      ..writeByte(5)
+      ..write(obj.images)
       ..writeByte(6)
-      ..write(obj.rating)
+      ..write(obj.ratingsAverage)
       ..writeByte(7)
-      ..write(obj.ratingCount)
+      ..write(obj.ratingsQuantity)
       ..writeByte(8)
       ..write(obj.brand);
   }
@@ -62,4 +62,4 @@ class ProductEntityAdapter extends TypeAdapter<ProductEntity> {
       other is ProductEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
-}*/
+}
