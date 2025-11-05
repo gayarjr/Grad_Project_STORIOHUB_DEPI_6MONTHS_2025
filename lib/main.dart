@@ -6,7 +6,7 @@ import 'package:gradprojectstorio/core/functions/theme_app.dart';
 import 'package:gradprojectstorio/core/routes/go_router.dart';
 
 // Home imports
-import 'package:gradprojectstorio/features/home/data/repositories/Product_Repository.dart';
+import 'package:gradprojectstorio/features/home/data/repositories/product_repository.dart';
 import 'package:gradprojectstorio/features/home/data/repositories/categories_repository.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/Product_Cubit.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/categories_cubit.dart';
