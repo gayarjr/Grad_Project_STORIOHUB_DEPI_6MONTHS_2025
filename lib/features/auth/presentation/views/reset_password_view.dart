@@ -5,7 +5,7 @@ import 'package:gradprojectstorio/core/routes/app_routes.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/core/widgets/auth_button.dart';
-import 'package:gradprojectstorio/core/widgets/text_form_field_with_icon.dart';
+import 'package:gradprojectstorio/core/widgets/password_field.dart';
 
 class ResetPasswordView extends StatefulWidget {
   const ResetPasswordView({super.key});
@@ -105,20 +105,28 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
             SizedBox(height: 32.h),
 
             // New Password Field
-            const TextFormFieldWithIcon(
-              hintText: 'Enter new password',
-              label: 'New Password',
-              icon: Icons.lock_outline,
-              isPassword: true,
+            PasswordField(
+              labelText: "New Password",
+              hintText: 'Enter your new password',
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please confirm your password';
+                }
+                return null;
+              },
             ),
             SizedBox(height: 20.h),
 
             // Confirm Password Field
-            const TextFormFieldWithIcon(
-              hintText: 'Confirm new password',
-              label: 'Confirm Password',
-              icon: Icons.lock_outline,
-              isPassword: true,
+            PasswordField(
+              labelText: "Confirm Password",
+              hintText: 'Confirm your password',
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please confirm your password';
+                }
+                return null;
+              },
             ),
             SizedBox(height: 40.h),
 

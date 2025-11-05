@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/functions/theme_app.dart';
 import 'package:gradprojectstorio/core/routes/go_router.dart';
+import 'package:gradprojectstorio/core/services/shared_preferences_service.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/category_entity.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 import 'package:gradprojectstorio/features/watchlist/data/data_sources/local_wishlist_data_source.dart';
@@ -23,6 +24,7 @@ import 'features/cart/presentation/cubit/checkout_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Prefs.init();
   await Hive.initFlutter();
   Hive.registerAdapter(ProductEntityAdapter());
   Hive.registerAdapter(CategoryEntityAdapter());

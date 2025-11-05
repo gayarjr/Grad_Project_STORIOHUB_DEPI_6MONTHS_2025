@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gradprojectstorio/core/utils/app_assets.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/features/auth/presentation/widgets/social_button.dart';
 
 class SocialButtonsRow extends StatelessWidget {
@@ -10,17 +12,28 @@ class SocialButtonsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Row(
+          spacing: 8.w,
+          children: [
+            Expanded(child: Divider(thickness: 1.2)),
+            Text('Or', style: AppStyles.textRegular14),
+            Expanded(child: Divider(thickness: 1.2)),
+          ],
+        ),
+        SizedBox(height: 16.h),
         SocialButton(
           text: 'Login with Google',
-          iconPath: 'assets/icons/logos_google-icon.png',
+          borderColor: AppColors.primary,
+          iconPath: AppAssets.iconsLogosGoogleIcon,
           onPressed: () {},
         ),
         SizedBox(height: 16.h),
         SocialButton(
           text: 'Login with Facebook',
-          iconPath: 'assets/icons/logos_facebook.png',
+          iconPath: AppAssets.iconsLogosFacebook,
           onPressed: () {},
-          textColor: AppColors.facebookColor,
+          backgroundColor: AppColors.facebookColor,
+          textColor: AppColors.white,
         ),
       ],
     );

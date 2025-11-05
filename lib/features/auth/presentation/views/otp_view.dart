@@ -22,7 +22,7 @@ class OtpView extends StatelessWidget {
       height: 60.h,
       textStyle: AppStyles.textBold24,
       decoration: BoxDecoration(
-        border: Border.all(color: AppColors.grey.withOpacity(0.5)),
+        border: Border.all(color: AppColors.grey.withValues(alpha: 0.5)),
         borderRadius: BorderRadius.circular(10.r),
       ),
     );

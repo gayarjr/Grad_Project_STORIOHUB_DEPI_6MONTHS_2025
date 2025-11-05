@@ -67,7 +67,6 @@ class ForgotPasswordView extends StatelessWidget {
             AuthButton(
               text: 'Send Code',
               onTap: () {
-                // TODO: Implement API call to send code
                 // On success, navigate to OTP verification screen
                 context.pushNamed(AppRoutes.otp, extra: placeholderEmail);
               },

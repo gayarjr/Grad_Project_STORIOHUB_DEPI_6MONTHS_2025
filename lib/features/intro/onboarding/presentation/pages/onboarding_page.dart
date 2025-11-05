@@ -30,7 +30,7 @@ class OnboardingPage extends StatelessWidget {
                 text: "Get Started",
                 icon: Icons.arrow_forward,
                 onPressed: () {
-                  GoRouter.of(context).go(AppRoutes.register);
+                  GoRouter.of(context).go(AppRoutes.login);
                 },
               ),
             ),
