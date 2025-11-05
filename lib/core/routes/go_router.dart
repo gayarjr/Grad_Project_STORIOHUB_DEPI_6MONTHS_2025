@@ -17,7 +17,7 @@ import '../../features/auth/presentation/views/login_view.dart';
 
 abstract class AppGoRouter {
   static final router = GoRouter(
-    initialLocation: AppRoutes.splash,
+    initialLocation: AppRoutes.main,
     routes: <GoRoute>[
       GoRoute(
         path: AppRoutes.splash,

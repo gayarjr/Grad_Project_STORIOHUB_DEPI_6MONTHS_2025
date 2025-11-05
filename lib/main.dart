@@ -123,16 +123,7 @@ import 'package:gradprojectstorio/features/home/data/repositories/Product_Reposi
 import 'package:gradprojectstorio/features/home/data/repositories/categories_repository.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/Product_Cubit.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/categories_cubit.dart';
-
-// Shared services
-import 'package:gradprojectstorio/core/services/shared_preferences_service.dart';
-
-// Domain entities (if still used)
-import 'package:gradprojectstorio/features/home/domain/entities/category_entity.dart';
-import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
-
 // Hive and Wishlist imports
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:gradprojectstorio/features/watchlist/data/data_sources/local_wishlist_data_source.dart';
 import 'package:gradprojectstorio/features/watchlist/data/repos/wishlist_repo_impl.dart';
 import 'package:gradprojectstorio/features/watchlist/presentation/cubit/wishlist_cubit.dart';
@@ -149,16 +140,6 @@ import 'features/cart/presentation/cubit/checkout_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // ✅ تهيئة Hive (لو لسه مستخدم في المشروع)
-  /*await Hive.initFlutter();
-  Hive.registerAdapter(ProductEntityAdapter());
-  Hive.registerAdapter(CategoryEntityAdapter());
-  await Hive.openBox<ProductEntity>('watchlist');
-
-  // ✅ تهيئة Shared Preferences (لو مستخدم في أي مكان)
-  await SharedPreferencesService.init();*/
-
   runApp(DevicePreview(builder: (context) => const Storio()));
 }
 
