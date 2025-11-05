@@ -14,7 +14,6 @@ import '../../features/auth/presentation/views/login_view.dart';
 
 abstract class AppGoRouter {
   static final router = GoRouter(
-    initialLocation: AppRoutes.splash,
     routes: <GoRoute>[
       GoRoute(
         path: AppRoutes.splash,
@@ -25,7 +24,6 @@ abstract class AppGoRouter {
         builder: (context, state) => const OnboardingPage(),
       ),
       GoRoute(path: AppRoutes.login, builder: (context, state) => LoginView()),
-
       GoRoute(
         path: AppRoutes.register,
         builder: (context, state) => RegisterPage(),

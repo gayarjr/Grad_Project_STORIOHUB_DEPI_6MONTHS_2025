@@ -24,9 +24,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(RegisterLoadingState());
 
     try {
-      print("📤 Sending registration request...");
-      print("Data: name=$name, email=$email, phone=$phone");
-
       Response response = await dio.post(
         'https://ecommerce.routemisr.com/api/v1/auth/signup',
         data: {
@@ -37,35 +34,26 @@ class RegisterCubit extends Cubit<RegisterState> {
           "phone": phone,
         },
       );
-
-      print("📥 Response Status: ${response.statusCode}");
-      print("📥 Response Data: ${response.data}");
-
       // Check if the response is successful
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (response.data['message'] == 'success') {
-          print("✅ Registration successful");
           emit(RegisterSuccessState());
         } else {
           // API returned 200 but with an error message
           String errorMessage =
               response.data['message'] ?? 'Registration failed';
-          print("⚠️ API Error: $errorMessage");
           emit(RegisterErrorState(errorMessage));
         }
       } else {
         // Handle 4xx errors
         String errorMessage = _extractErrorMessage(response.data);
-        print("❌ Registration failed: $errorMessage");
         emit(RegisterErrorState(errorMessage));
       }
     } on DioException catch (dioError) {
       String errorMessage = _handleDioError(dioError);
-      print("❌ Dio Error: $errorMessage");
       emit(RegisterErrorState(errorMessage));
     } catch (error) {
       String errorMessage = "Unexpected error: ${error.toString()}";
-      print("❌ Unexpected Error: $errorMessage");
       emit(RegisterErrorState(errorMessage));
     }
   }

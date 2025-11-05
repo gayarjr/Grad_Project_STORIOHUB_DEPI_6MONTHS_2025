@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gradprojectstorio/features/new_address/presentation/views/address_page.dart';
+import 'package:gradprojectstorio/features/address/presentation/views/address_page.dart';
 
 import '../../domain/entities/cart_item.dart';
 import '../../presentation/cubit/checkout_cubit.dart';

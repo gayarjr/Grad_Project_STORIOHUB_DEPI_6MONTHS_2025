@@ -4,14 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SuccessDialog extends StatelessWidget {
   final VoidCallback onDismiss;
 
-  const SuccessDialog({Key? key, required this.onDismiss}) : super(key: key);
+  const SuccessDialog({super.key, required this.onDismiss});
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.r),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
       child: Container(
         padding: EdgeInsets.all(32.r),
         child: Column(
@@ -24,11 +22,7 @@ class SuccessDialog extends StatelessWidget {
                 color: Colors.green[50],
                 shape: BoxShape.circle,
               ),
-              child: Icon(
-                Icons.check,
-                color: Colors.green,
-                size: 50.r,
-              ),
+              child: Icon(Icons.check, color: Colors.green, size: 50.r),
             ),
             SizedBox(height: 24.h),
             Text(
@@ -42,10 +36,7 @@ class SuccessDialog extends StatelessWidget {
             SizedBox(height: 12.h),
             Text(
               'Your order has been placed.',
-              style: TextStyle(
-                fontSize: 16.sp,
-                color: Colors.grey[600],
-              ),
+              style: TextStyle(fontSize: 16.sp, color: Colors.grey[600]),
             ),
             SizedBox(height: 32.h),
             SizedBox(

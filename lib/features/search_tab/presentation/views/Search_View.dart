@@ -4,7 +4,7 @@ import 'package:gradprojectstorio/features/search_tab/presentation/widgets/No_Re
 import 'package:gradprojectstorio/features/search_tab/presentation/widgets/Search_Results_View.dart';
 
 class SearchView extends StatefulWidget {
-  const SearchView({Key? key}) : super(key: key);
+  const SearchView({super.key});
 
   @override
   State<SearchView> createState() => _SearchViewState();

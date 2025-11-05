@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
-import 'package:gradprojectstorio/features/new_address/presentation/widgets/add_new_address_sheet.dart';
-import 'package:gradprojectstorio/features/New_Address/presentation/widgets/address_item.dart';
+import 'package:gradprojectstorio/features/address/presentation/widgets/address_item.dart';
+import 'package:gradprojectstorio/features/address/presentation/widgets/add_new_address_sheet.dart';
 
 class AddressPage extends StatefulWidget {
   const AddressPage({super.key});
@@ -69,7 +69,7 @@ class _AddressPageState extends State<AddressPage> {
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.3),
+                          color: Colors.grey.withValues(alpha: 0.3),
                           spreadRadius: 2,
                           blurRadius: 6,
                           offset: const Offset(0, 3),

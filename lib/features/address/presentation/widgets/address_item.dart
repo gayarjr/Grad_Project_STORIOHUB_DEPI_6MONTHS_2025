@@ -5,8 +5,7 @@ class AddressItem extends StatelessWidget {
   final Map<String, dynamic> address;
   final VoidCallback onDelete;
 
-  const AddressItem({Key? key, required this.address, required this.onDelete})
-    : super(key: key);
+  const AddressItem({super.key, required this.address, required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class AddressItem extends StatelessWidget {
         border: Border.all(color: Colors.grey.shade300),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.grey.withValues(alpha: 0.2),
             blurRadius: 6,
             offset: const Offset(0, 3),
           ),

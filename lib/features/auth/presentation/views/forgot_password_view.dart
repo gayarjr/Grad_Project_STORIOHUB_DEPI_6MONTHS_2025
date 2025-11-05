@@ -48,7 +48,9 @@ class ForgotPasswordView extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.grey.withOpacity(0.5)),
+                border: Border.all(
+                  color: AppColors.grey.withValues(alpha: 0.5),
+                ),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Text(
