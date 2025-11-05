@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/features/home/presentation/views/home_view.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/Account_page.dart';
-import 'package:gradprojectstorio/features/search_tab/presentation/views/Search_View.dart';
+import 'package:gradprojectstorio/features/search_tab/presentation/views/search_view.dart';
 import 'package:gradprojectstorio/features/watchlist/presentation/views/wishlist_view.dart';
 
 import '../cart/presentation/cubit/cart_cubit.dart';

@@ -10,11 +10,11 @@ class CartItemWidget extends StatelessWidget {
   final Function(int) onQuantityChanged;
 
   const CartItemWidget({
-    Key? key,
+    super.key,
     required this.item,
     required this.onRemove,
     required this.onQuantityChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +65,7 @@ class CartItemWidget extends StatelessWidget {
                 SizedBox(height: 4.h),
                 Text(
                   'Size ${item.size}',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    color: Colors.grey[600],
-                  ),
+                  style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
                 ),
                 SizedBox(height: 8.h),
                 Text(

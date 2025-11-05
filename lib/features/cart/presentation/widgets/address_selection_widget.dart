@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import '../../domain/entities/delivery_address.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,11 +8,11 @@ class AddressSelectionWidget extends StatelessWidget {
   final VoidCallback onTap;
 
   const AddressSelectionWidget({
-    Key? key,
+    super.key,
     required this.address,
     required this.isSelected,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -78,10 +76,7 @@ class AddressSelectionWidget extends StatelessWidget {
                   SizedBox(height: 4.h),
                   Text(
                     address.address,
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      color: Colors.grey[600],
-                    ),
+                    style: TextStyle(fontSize: 14.sp, color: Colors.grey[600]),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -100,15 +95,15 @@ class AddressSelectionWidget extends StatelessWidget {
               ),
               child: isSelected
                   ? Center(
-                child: Container(
-                  width: 14.r,
-                  height: 14.r,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.black,
-                  ),
-                ),
-              )
+                      child: Container(
+                        width: 14.r,
+                        height: 14.r,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.black,
+                        ),
+                      ),
+                    )
                   : null,
             ),
           ],

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_entity.dart';
+/*part of 'product_entity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -62,4 +62,4 @@ class ProductEntityAdapter extends TypeAdapter<ProductEntity> {
       other is ProductEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
-}
+}*/

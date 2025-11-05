@@ -5,7 +5,7 @@ import 'package:gradprojectstorio/core/utils/app_colors.dart';
 class SuccessDialog extends StatelessWidget {
   final VoidCallback onDismiss;
 
-  const SuccessDialog({Key? key, required this.onDismiss}) : super(key: key);
+  const SuccessDialog({super.key, required this.onDismiss});
 
   @override
   Widget build(BuildContext context) {

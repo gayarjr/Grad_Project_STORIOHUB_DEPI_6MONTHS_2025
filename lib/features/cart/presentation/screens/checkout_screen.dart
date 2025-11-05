@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gradprojectstorio/features/new_address/presentation/views/address_page.dart';
+import 'package:gradprojectstorio/features/address/presentation/views/address_page.dart';
 
 import '../../domain/entities/cart_item.dart';
 import '../../presentation/cubit/checkout_cubit.dart';
@@ -15,10 +15,10 @@ class CheckoutScreen extends StatefulWidget {
   final double subtotal;
 
   const CheckoutScreen({
-    Key? key,
+    super.key,
     required this.cartItems,
     required this.subtotal,
-  }) : super(key: key);
+  });
 
   @override
   State<CheckoutScreen> createState() => _CheckoutScreenState();
@@ -156,7 +156,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     });
                                   },
                                 );
-                              }).toList(),
+                              }),
                             SizedBox(height: 24.h),
                             // Shipping Fee
                             Padding(
@@ -227,7 +227,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
+                          color: Colors.black.withValues(alpha: 0.05),
                           blurRadius: 10,
                           offset: const Offset(0, -5),
                         ),

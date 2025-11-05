@@ -56,6 +56,10 @@ abstract class AppStyles {
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle textRegular13 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle textMedium14 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,

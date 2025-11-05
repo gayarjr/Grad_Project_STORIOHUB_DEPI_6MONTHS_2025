@@ -14,7 +14,10 @@ class BrandSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Brand', style: AppStyles.textSemiBold20),
+        Text(
+          'Brand',
+          style: AppStyles.textSemiBold20.copyWith(color: Colors.black87),
+        ),
         SizedBox(height: 12.h),
         BrandCard(onTap: () {}, category: product.brand),
       ],

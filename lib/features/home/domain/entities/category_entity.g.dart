@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'category_entity.dart';
+/*part of 'category_entity.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -44,4 +44,4 @@ class CategoryEntityAdapter extends TypeAdapter<CategoryEntity> {
       other is CategoryEntityAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
-}
+}*/

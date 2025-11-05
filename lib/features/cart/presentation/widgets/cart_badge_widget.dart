@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,11 +5,7 @@ class CartBadge extends StatelessWidget {
   final int count;
   final Widget child;
 
-  const CartBadge({
-    Key? key,
-    required this.count,
-    required this.child,
-  }) : super(key: key);
+  const CartBadge({super.key, required this.count, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +23,7 @@ class CartBadge extends StatelessWidget {
                 color: Colors.red,
                 shape: BoxShape.circle,
               ),
-              constraints: BoxConstraints(
-                minWidth: 18.r,
-                minHeight: 18.r,
-              ),
+              constraints: BoxConstraints(minWidth: 18.r, minHeight: 18.r),
               child: Text(
                 count > 99 ? '99+' : count.toString(),
                 style: TextStyle(

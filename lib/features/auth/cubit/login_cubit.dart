@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'login_states.dart';
 
@@ -21,7 +21,6 @@ class LoginCubit extends Cubit<LoginState> {
       );
 
       String token = response.data["token"];
-      print("✅ Login Success - Token: $token");
 
       emit(LoginSuccessState(token));
     } catch (error) {
@@ -30,8 +29,6 @@ class LoginCubit extends Cubit<LoginState> {
       if (error is DioException) {
         errorMessage = error.response?.data['message'] ?? error.message!;
       }
-
-      print("❌ Login Error: $errorMessage");
       emit(LoginErrorState(errorMessage));
     }
   }

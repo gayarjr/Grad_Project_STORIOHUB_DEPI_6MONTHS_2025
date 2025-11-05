@@ -4,14 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/functions/theme_app.dart';
 import 'package:gradprojectstorio/core/routes/go_router.dart';
-import 'package:gradprojectstorio/features/home/domain/entities/category_entity.dart';
-import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
+
+// Home imports
+import 'package:gradprojectstorio/features/home/data/repositories/product_repository.dart';
+import 'package:gradprojectstorio/features/home/data/repositories/categories_repository.dart';
+import 'package:gradprojectstorio/features/home/presentation/cubit/Product_Cubit.dart';
+import 'package:gradprojectstorio/features/home/presentation/cubit/categories_cubit.dart';
+// Hive and Wishlist imports
 import 'package:gradprojectstorio/features/watchlist/data/data_sources/local_wishlist_data_source.dart';
 import 'package:gradprojectstorio/features/watchlist/data/repos/wishlist_repo_impl.dart';
 import 'package:gradprojectstorio/features/watchlist/presentation/cubit/wishlist_cubit.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
-
+// Cart imports
 import 'features/cart/data/repositories/cart_repository_impl.dart';
 import 'features/cart/domain/usecases/add_to_cart_usecase.dart';
 import 'features/cart/domain/usecases/get_cart_items_usecase.dart';
@@ -23,10 +27,6 @@ import 'features/cart/presentation/cubit/checkout_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  Hive.registerAdapter(ProductEntityAdapter());
-  Hive.registerAdapter(CategoryEntityAdapter());
-  await Hive.openBox<ProductEntity>('watchlist');
   runApp(DevicePreview(builder: (context) => const Storio()));
 }
 
@@ -35,7 +35,7 @@ class Storio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Initialize cart dependencies (Singleton pattern)
+    //  Initialize cart dependencies
     final cartRepository = CartRepositoryImpl();
     final getCartItemsUseCase = GetCartItemsUseCase(cartRepository);
     final addToCartUseCase = AddToCartUseCase(cartRepository);
@@ -49,7 +49,19 @@ class Storio extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MultiBlocProvider(
         providers: [
-          // Wishlist Cubit
+          //  Categories Cubit
+          BlocProvider(
+            create: (context) =>
+                CategoriesCubit(CategoriesRepository())..fetchCategories(),
+          ),
+
+          //  Products Cubit
+          BlocProvider(
+            create: (context) =>
+                ProductCubit(ProductRepository())..fetchAllProducts(),
+          ),
+
+          //  Wishlist Cubit
           BlocProvider(
             create: (context) => WishlistCubit(
               wishlistRepo: WishlistRepoImpl(
@@ -58,7 +70,7 @@ class Storio extends StatelessWidget {
             ),
           ),
 
-          // Cart Cubit
+          //  Cart Cubit
           BlocProvider(
             create: (context) => CartCubit(
               getCartItemsUseCase: getCartItemsUseCase,
@@ -66,15 +78,15 @@ class Storio extends StatelessWidget {
               updateQuantityUseCase: updateQuantityUseCase,
               removeItemUseCase: removeItemUseCase,
               repository: cartRepository,
-            )..loadCart(), // Load cart on initialization
+            )..loadCart(),
           ),
 
-          // Checkout Cubit
+          //  Checkout Cubit
           BlocProvider(
             create: (context) => CheckoutCubit(
               repository: cartRepository,
               placeOrderUseCase: placeOrderUseCase,
-            )..loadCheckout(), // Load checkout on initialization
+            )..loadCheckout(),
           ),
         ],
         child: MaterialApp.router(

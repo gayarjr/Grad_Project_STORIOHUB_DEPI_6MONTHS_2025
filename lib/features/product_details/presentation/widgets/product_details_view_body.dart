@@ -15,29 +15,35 @@ class ProductDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 12.h),
-            HeaderProductDetails(product: product),
-            SizedBox(height: 24.h),
-            SelectSizeProduct(),
-            SizedBox(height: 24.h),
-            DescriptionSection(product: product),
-            SizedBox(height: 24.h),
-            BrandSection(product: product),
-            SizedBox(height: 24.h),
-            ShippingSection(product: product),
-            SizedBox(height: 16.h),
-            Divider(),
-            SizedBox(height: 16.h),
-            ButtonAndPrice(product: product),
-            SizedBox(height: 24.h),
-          ],
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeaderProductDetails(product: product),
+              SizedBox(height: 24.h),
+
+              SelectSizeProduct(),
+              SizedBox(height: 24.h),
+
+              SizedBox(height: 16.h),
+
+              DescriptionSection(product: product),
+              SizedBox(height: 24.h),
+
+              BrandSection(product: product),
+              SizedBox(height: 24.h),
+
+              ShippingSection(product: product),
+              SizedBox(height: 16.h),
+              ButtonAndPrice(product: product),
+              SizedBox(height: 24.h),
+            ],
+          ),
         ),
       ),
     );
