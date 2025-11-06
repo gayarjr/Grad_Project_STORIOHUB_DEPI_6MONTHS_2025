@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/categories_cubit.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/categories_state.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/category_entity.dart';
+import 'package:gradprojectstorio/features/home/presentation/widgets/loading_categories.dart';
 import 'category_item.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class CategoriesSection extends StatelessWidget {
     return BlocBuilder<CategoriesCubit, CategoriesState>(
       builder: (context, state) {
         if (state is CategoriesLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return LoadingCategories();
         } else if (state is CategoriesLoaded) {
           final List<CategoryEntity> categories = state.categories;
           return Column(

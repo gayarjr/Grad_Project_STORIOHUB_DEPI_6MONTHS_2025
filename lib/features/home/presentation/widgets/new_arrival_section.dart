@@ -3,13 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/widgets/product_card.dart';
-import 'package:gradprojectstorio/features/home/domain/entities/category_entity.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/Product_Cubit.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/product_state.dart';
+import 'package:gradprojectstorio/features/home/presentation/widgets/loading_new_arrivals.dart';
 import 'package:gradprojectstorio/features/home/presentation/widgets/title_and_see_all.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class NewArrivalSection extends StatelessWidget {
   const NewArrivalSection({super.key});
@@ -19,44 +18,7 @@ class NewArrivalSection extends StatelessWidget {
     return BlocBuilder<ProductCubit, ProductState>(
       builder: (context, state) {
         if (state is ProductLoading) {
-          return Skeletonizer(
-            enabled: true,
-            child: Column(
-              children: [
-                TitleAndSeeAll(title: 'New Arrivals', onTap: () {}),
-                SizedBox(height: 12.h),
-                GridView.builder(
-                  itemCount: 4,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 20.w,
-                    mainAxisSpacing: 20.h,
-                    childAspectRatio: 0.6,
-                  ),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {},
-                      child: ProductCard(
-                        product: ProductEntity(
-                          id: '',
-                          title: '',
-                          description: '',
-                          price: 0,
-                          imageCover: '',
-                          images: [],
-                          ratingsAverage: 0,
-                          ratingsQuantity: 0,
-                          brand: CategoryEntity(id: '', name: '', image: ''),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          );
+          return LoadingNewArrivals();
         } else if (state is ProductLoaded) {
           final List<ProductEntity> products = state.products;
           return Column(
