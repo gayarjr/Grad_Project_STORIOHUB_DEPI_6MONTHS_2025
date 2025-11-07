@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/features/home/presentation/views/home_view.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/account_page.dart';
-import 'package:gradprojectstorio/features/search_tab/presentation/views/search_view.dart';
+import 'package:gradprojectstorio/features/search/presentation/views/search_view.dart';
 import 'package:gradprojectstorio/features/watchlist/presentation/views/wishlist_view.dart';
 
-import '../cart/presentation/cubit/cart_cubit.dart';
 import '../cart/presentation/screens/cart_screen.dart';
 
 class MainView extends StatefulWidget {
@@ -23,10 +21,9 @@ class MainViewState extends State<MainView> {
     const HomeView(),
     SearchView(),
     WishlistView(),
-    BlocProvider.value(
-      value: context.read<CartCubit>(),
-      child: const CartScreen(),
-    ),
+
+    const CartScreen(),
+
     AccountScreen(),
   ];
 

@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/functions/theme_app.dart';
 import 'package:gradprojectstorio/core/routes/go_router.dart';
 import 'package:gradprojectstorio/core/services/shared_preferences_service.dart';
-
 // Home imports
 import 'package:gradprojectstorio/features/home/data/repositories/product_repository.dart';
 import 'package:gradprojectstorio/features/home/data/repositories/categories_repository.dart';
@@ -18,16 +17,6 @@ import 'package:gradprojectstorio/features/watchlist/data/data_sources/local_wis
 import 'package:gradprojectstorio/features/watchlist/data/repos/wishlist_repo_impl.dart';
 import 'package:gradprojectstorio/features/watchlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-// Cart imports
-import 'features/cart/data/repositories/cart_repository_impl.dart';
-import 'features/cart/domain/usecases/add_to_cart_usecase.dart';
-import 'features/cart/domain/usecases/get_cart_items_usecase.dart';
-import 'features/cart/domain/usecases/place_order_usecase.dart';
-import 'features/cart/domain/usecases/remove_item_usecase.dart';
-import 'features/cart/domain/usecases/update_quantity_usecase.dart';
-import 'features/cart/presentation/cubit/cart_cubit.dart';
-import 'features/cart/presentation/cubit/checkout_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,14 +33,6 @@ class Storio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //  Initialize cart dependencies
-    final cartRepository = CartRepositoryImpl();
-    final getCartItemsUseCase = GetCartItemsUseCase(cartRepository);
-    final addToCartUseCase = AddToCartUseCase(cartRepository);
-    final updateQuantityUseCase = UpdateQuantityUseCase(cartRepository);
-    final removeItemUseCase = RemoveItemUseCase(cartRepository);
-    final placeOrderUseCase = PlaceOrderUseCase(cartRepository);
-
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -77,25 +58,6 @@ class Storio extends StatelessWidget {
                 localWishlistDataSource: LocalWishlistDataSourceImpl(),
               ),
             ),
-          ),
-
-          //  Cart Cubit
-          BlocProvider(
-            create: (context) => CartCubit(
-              getCartItemsUseCase: getCartItemsUseCase,
-              addToCartUseCase: addToCartUseCase,
-              updateQuantityUseCase: updateQuantityUseCase,
-              removeItemUseCase: removeItemUseCase,
-              repository: cartRepository,
-            )..loadCart(),
-          ),
-
-          //  Checkout Cubit
-          BlocProvider(
-            create: (context) => CheckoutCubit(
-              repository: cartRepository,
-              placeOrderUseCase: placeOrderUseCase,
-            )..loadCheckout(),
           ),
         ],
         child: MaterialApp.router(

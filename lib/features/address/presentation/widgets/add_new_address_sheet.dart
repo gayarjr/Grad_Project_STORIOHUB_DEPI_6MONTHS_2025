@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
-import 'package:gradprojectstorio/features/address/presentation/widgets/success_dialog.dart';
+import 'package:gradprojectstorio/core/widgets/success_dialog.dart';
 
 class AddNewAddressSheet extends StatefulWidget {
   final Function(Map<String, dynamic>) onAdd;
@@ -83,8 +83,10 @@ class _AddNewAddressSheetState extends State<AddNewAddressSheet> {
 
                 showDialog(
                   context: context,
-                  builder: (_) =>
-                      SuccessDialog(onDismiss: () => Navigator.pop(context)),
+                  builder: (_) => SuccessDialog(
+                    onDismiss: () => Navigator.pop(context),
+                    message: 'Your new address has been added.',
+                  ),
                 );
               },
               style: ElevatedButton.styleFrom(

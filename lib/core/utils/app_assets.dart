@@ -54,6 +54,10 @@ class AppAssets {
   /// assets/icons/Vector.png
   static const String iconsVector = "assets/icons/Vector.png";
 
+  /// Assets for imagesCheckDone
+  /// assets/images/check_done.png
+  static const String imagesCheckDone = "assets/images/check_done.png";
+
   /// Assets for imagesLogo
   /// assets/images/logo.png
   static const String imagesLogo = "assets/images/logo.png";
