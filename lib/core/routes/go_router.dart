@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
+import 'package:gradprojectstorio/features/address/presentation/views/address_page.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/otp_view.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/register_page.dart';
@@ -83,6 +84,11 @@ abstract class AppGoRouter {
       GoRoute(
         path: AppRoutes.editProfile,
         builder: (context, state) => const ChangePassword(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.adressBook,
+        builder: (context, state) => const AddressPage(),
       ),
     ],
   );

@@ -43,7 +43,9 @@ class AccountScreen extends StatelessWidget {
           ProfileItem(
             icon: Icons.home_outlined,
             title: 'Address Book',
-            onTap: () {},
+            onTap: () {
+              context.push(AppRoutes.adressBook);
+            },
           ),
           const Divider(),
           ProfileItem(
