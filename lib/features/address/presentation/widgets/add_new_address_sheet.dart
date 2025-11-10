@@ -1,21 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
-import 'package:gradprojectstorio/core/widgets/success_dialog.dart';
 
-class AddNewAddressSheet extends StatefulWidget {
-  final Function(Map<String, dynamic>) onAdd;
-
-  const AddNewAddressSheet({super.key, required this.onAdd});
-
-  @override
-  State<AddNewAddressSheet> createState() => _AddNewAddressSheetState();
-}
-
-class _AddNewAddressSheetState extends State<AddNewAddressSheet> {
-  final fullAddressController = TextEditingController();
-  final stateController = TextEditingController();
-  final cityController = TextEditingController();
-  final phoneController = TextEditingController();
+class AddNewAddressSheet extends StatelessWidget {
+  const AddNewAddressSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,49 +33,14 @@ class _AddNewAddressSheetState extends State<AddNewAddressSheet> {
             ),
             const Divider(),
 
-            _buildTextField(
-              "Full Address",
-              "Enter your full address",
-              fullAddressController,
-            ),
-            _buildTextField("State", "Enter your state", stateController),
-            _buildTextField("City", "Enter your city", cityController),
-            _buildTextField(
-              "Phone",
-              "Enter your phone",
-              phoneController,
-              keyboardType: TextInputType.phone,
-            ),
+            _buildTextField("Full Address", "Enter your full address"),
+            _buildTextField("State", "Enter your state"),
+            _buildTextField("City", "Enter your city"),
+            _buildTextField("Phone", "Enter your phone"),
 
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
-                if (fullAddressController.text.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Please fill the required fields"),
-                    ),
-                  );
-                  return;
-                }
-
-                final newAddress = {
-                  "address":
-                      "${fullAddressController.text}, ${cityController.text}, ${stateController.text}. Phone: ${phoneController.text}",
-                  "isDefault": false,
-                };
-
-                widget.onAdd(newAddress);
-                Navigator.pop(context);
-
-                showDialog(
-                  context: context,
-                  builder: (_) => SuccessDialog(
-                    onDismiss: () => Navigator.pop(context),
-                    message: 'Your new address has been added.',
-                  ),
-                );
-              },
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size.fromHeight(50),
                 backgroundColor: AppColors.primary,
@@ -109,8 +61,7 @@ class _AddNewAddressSheetState extends State<AddNewAddressSheet> {
 
   Widget _buildTextField(
     String label,
-    String hint,
-    TextEditingController controller, {
+    String hint, {
     TextInputType? keyboardType,
   }) {
     return Padding(
@@ -124,7 +75,6 @@ class _AddNewAddressSheetState extends State<AddNewAddressSheet> {
           ),
           const SizedBox(height: 6),
           TextField(
-            controller: controller,
             keyboardType: keyboardType,
             decoration: InputDecoration(
               hintText: hint,

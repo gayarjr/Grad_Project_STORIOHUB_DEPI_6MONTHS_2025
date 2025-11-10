@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
+import 'package:gradprojectstorio/features/search/presentation/widgets/empty_search_view.dart';
+import 'package:gradprojectstorio/features/search/presentation/widgets/no_results_view.dart';
+import 'package:gradprojectstorio/features/search/presentation/widgets/search_results_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/Product_Cubit.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/product_state.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
-import 'package:gradprojectstorio/features/search_tab/presentation/widgets/Empty_Search_View.dart';
-import 'package:gradprojectstorio/features/search_tab/presentation/widgets/No_Results_View.dart';
-import 'package:gradprojectstorio/features/search_tab/presentation/widgets/Search_Results_View.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});

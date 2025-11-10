@@ -4,30 +4,8 @@ import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/features/address/presentation/widgets/address_item.dart';
 import 'package:gradprojectstorio/features/address/presentation/widgets/add_new_address_sheet.dart';
 
-class AddressPage extends StatefulWidget {
+class AddressPage extends StatelessWidget {
   const AddressPage({super.key});
-
-  @override
-  State<AddressPage> createState() => _AddressPageState();
-}
-
-class _AddressPageState extends State<AddressPage> {
-  List<Map<String, dynamic>> addresses = [
-    {"address": "123 Nile Street, Cairo, Egypt", "isDefault": false},
-    {"address": "45 Tahrir Square, Giza, Egypt", "isDefault": false},
-  ];
-
-  void _addNewAddress(Map<String, dynamic> newAddress) {
-    setState(() {
-      addresses.add(newAddress);
-    });
-  }
-
-  void _deleteAddress(int index) {
-    setState(() {
-      addresses.removeAt(index);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,33 +35,11 @@ class _AddressPageState extends State<AddressPage> {
               ),
             ),
             const SizedBox(height: 12),
-            Expanded(
-              child: ListView.separated(
-                itemCount: addresses.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 12),
-                itemBuilder: (context, index) {
-                  final address = addresses[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withValues(alpha: 0.3),
-                          spreadRadius: 2,
-                          blurRadius: 6,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: AddressItem(
-                      address: address,
-                      onDelete: () => _deleteAddress(index),
-                    ),
-                  );
-                },
-              ),
-            ),
+
+            /// UI placeholder for address list
+            const AddressItem(),
+            const SizedBox(height: 12),
+            const AddressItem(),
           ],
         ),
       ),
@@ -105,7 +61,7 @@ class _AddressPageState extends State<AddressPage> {
                         top: Radius.circular(20),
                       ),
                     ),
-                    builder: (_) => AddNewAddressSheet(onAdd: _addNewAddress),
+                    builder: (_) => const AddNewAddressSheet(),
                   );
                 },
                 icon: const Icon(Icons.add, color: AppColors.primary, size: 25),
@@ -128,14 +84,7 @@ class _AddressPageState extends State<AddressPage> {
               width: double.infinity,
               height: 50.h,
               child: ElevatedButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Address applied successfully ✅"),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,
                   foregroundColor: AppColors.white,

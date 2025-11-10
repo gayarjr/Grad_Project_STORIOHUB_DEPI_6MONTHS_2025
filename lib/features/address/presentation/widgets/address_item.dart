@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 
 class AddressItem extends StatelessWidget {
-  final Map<String, dynamic> address;
-  final VoidCallback onDelete;
-
-  const AddressItem({super.key, required this.address, required this.onDelete});
+  const AddressItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +28,15 @@ class AddressItem extends StatelessWidget {
             size: 30,
           ),
           const SizedBox(width: 10),
-          Expanded(
+          const Expanded(
             child: Text(
-              address["address"],
-              style: const TextStyle(fontSize: 14, color: AppColors.primary),
+              "Address Example - UI only",
+              style: TextStyle(fontSize: 14, color: AppColors.primary),
             ),
           ),
           IconButton(
             icon: const Icon(Icons.delete, color: AppColors.red),
-            onPressed: onDelete,
+            onPressed: () {},
           ),
         ],
       ),
