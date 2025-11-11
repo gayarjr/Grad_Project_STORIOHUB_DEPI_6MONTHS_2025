@@ -1,8 +1,12 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
+import 'package:gradprojectstorio/core/widgets/custom_snack_bar.dart';
 import 'package:gradprojectstorio/features/cart/domain/entities/product_cart_entity.dart';
+import 'package:gradprojectstorio/features/cart/presentation/cubit/cart_cubit.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.product});
@@ -13,7 +17,7 @@ class CartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 100.h,
+      height: 120.h,
       margin: EdgeInsets.symmetric(vertical: 8.h),
       padding: EdgeInsets.all(12.r),
       decoration: BoxDecoration(
@@ -53,13 +57,14 @@ class CartItem extends StatelessWidget {
                         style: AppStyles.textSemiBold16,
                       ),
                     ),
+                    SizedBox(width: 12.w),
                     InkWell(
-                      onTap: () {},
-                      child: Icon(
-                        Icons.delete_outline,
-                        color: Colors.red,
-                        size: 20.r,
-                      ),
+                      onTap: () {
+                        context.read<CartCubit>().removeFromCart(
+                          productId: product.id,
+                        );
+                      },
+                      child: Icon(Icons.delete_outline, color: Colors.red),
                     ),
                   ],
                 ),
@@ -83,7 +88,18 @@ class CartItem extends StatelessWidget {
                           _quantityButton(
                             icon: Icons.remove,
                             onTap: () {
-                              if (product.count > 1) {}
+                              if (product.count > 1) {
+                                context.read<CartCubit>().updateProductFromCart(
+                                  productId: product.id,
+                                  count: (--product.count).toString(),
+                                );
+                              } else {
+                                customSnackBar(
+                                  context,
+                                  message: 'Can\'t be less than 1',
+                                  type: AnimatedSnackBarType.warning,
+                                );
+                              }
                             },
                           ),
                           Padding(
@@ -93,7 +109,15 @@ class CartItem extends StatelessWidget {
                               style: AppStyles.textSemiBold16,
                             ),
                           ),
-                          _quantityButton(icon: Icons.add, onTap: () {}),
+                          _quantityButton(
+                            icon: Icons.add,
+                            onTap: () {
+                              context.read<CartCubit>().updateProductFromCart(
+                                productId: product.id,
+                                count: (++product.count).toString(),
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ),

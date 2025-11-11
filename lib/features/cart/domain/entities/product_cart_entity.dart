@@ -2,7 +2,7 @@ class ProductCartEntity {
   final String id;
   final String imageCover;
   final String title;
-  final num count;
+  num count;
   final num price;
 
   ProductCartEntity({

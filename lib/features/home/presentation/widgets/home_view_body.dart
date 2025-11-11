@@ -16,7 +16,7 @@ class HomeViewBody extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: 12.h),
+            SizedBox(height: 24.h),
             SearchTextField(
               readOnly: true,
               onTap: () => navigateToTab(context, 1),

@@ -1,9 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gradprojectstorio/core/services/shared_preferences_service.dart';
 import 'package:gradprojectstorio/core/utils/app_assets.dart';
-import 'package:gradprojectstorio/features/intro/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
+
+import '../../../../../core/routes/app_routes.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -16,10 +20,19 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    navigate();
+  }
 
-    Timer(const Duration(seconds: 3), () {
-      GoRouter.of(context).go(OnboardingPage.routeName);
-    });
+  void navigate() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    final token = await Prefs.getToken();
+
+    if (token != null && token.isNotEmpty) {
+      context.go(AppRoutes.main);
+    } else {
+      context.go(AppRoutes.login);
+    }
   }
 
   @override

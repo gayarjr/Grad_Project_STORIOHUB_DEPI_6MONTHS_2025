@@ -38,20 +38,13 @@ class NewArrivalSection extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 20.w,
-                  mainAxisSpacing: 20.h,
-                  childAspectRatio: 0.6,
+                  crossAxisSpacing: 16.w,
+                  mainAxisSpacing: 16.h,
+                  childAspectRatio: 0.7,
                 ),
                 itemBuilder: (context, index) {
                   final product = products[index];
-                  return GestureDetector(
-                    onTap: () {
-                      GoRouter.of(
-                        context,
-                      ).push(AppRoutes.productDetails, extra: product);
-                    },
-                    child: ProductCard(product: product),
-                  );
+                  return ProductCard(product: product);
                 },
               ),
             ],

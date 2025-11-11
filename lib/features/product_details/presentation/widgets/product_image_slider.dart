@@ -17,7 +17,7 @@ class ProductImageSlider extends StatelessWidget {
       items: images
           .map(
             (item) => ClipRRect(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(24),
               child: Image.network(item, fit: BoxFit.cover, width: 1000),
             ),
           )

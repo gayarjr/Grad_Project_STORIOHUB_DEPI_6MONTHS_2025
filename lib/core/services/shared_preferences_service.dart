@@ -1,4 +1,3 @@
-// import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,15 +13,6 @@ class Prefs {
   }
 
   static String? getCartId() => _prefs?.getString('cartId');
-
-  // static Future<void> setUser(UserEntity user) async {
-  //   await _prefs?.setString('user', jsonEncode(user.toJson()));
-  // }
-
-  // static UserEntity? getUser() {
-  //   final user = _prefs?.getString('user');
-  //   return user != null ? UserEntity.fromJson(jsonDecode(user)) : null;
-  // }
 
   static Future<void> clearUserData() async {
     await _prefs?.remove('user');

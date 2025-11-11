@@ -1,10 +1,16 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/functions/theme_app.dart';
 import 'package:gradprojectstorio/core/routes/go_router.dart';
+import 'package:gradprojectstorio/core/services/api_service.dart';
+import 'package:gradprojectstorio/core/services/custom_observer_bloc.dart';
 import 'package:gradprojectstorio/core/services/shared_preferences_service.dart';
+import 'package:gradprojectstorio/features/cart/data/data_sources/cart_remote_data_source.dart';
+import 'package:gradprojectstorio/features/cart/data/repo/cart_repo_impl.dart';
+import 'package:gradprojectstorio/features/cart/presentation/cubit/cart_cubit.dart';
 // Home imports
 import 'package:gradprojectstorio/features/home/data/repositories/product_repository.dart';
 import 'package:gradprojectstorio/features/home/data/repositories/categories_repository.dart';
@@ -22,6 +28,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Prefs.init();
+  Bloc.observer = CustomObserverBloc();
   Hive.registerAdapter(ProductEntityAdapter());
   Hive.registerAdapter(CategoryEntityAdapter());
   await Hive.openBox<ProductEntity>('watchlist');
@@ -58,6 +65,16 @@ class Storio extends StatelessWidget {
                 localWishlistDataSource: LocalWishlistDataSourceImpl(),
               ),
             ),
+          ),
+
+          BlocProvider(
+            create: (context) => CartCubit(
+              cartRepo: CartRepoImpl(
+                cartRemoteDataSource: CartRemoteDataSourceImpl(
+                  apiService: ApiService(Dio()),
+                ),
+              ),
+            )..getCart(),
           ),
         ],
         child: MaterialApp.router(

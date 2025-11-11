@@ -22,6 +22,7 @@ class ProductCard extends StatelessWidget {
         GoRouter.of(context).push(AppRoutes.productDetails, extra: product);
       },
       child: Container(
+        height: 220.h,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
@@ -29,10 +30,8 @@ class ProductCard extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
           children: [
             ClipRRect(
-              clipBehavior: Clip.antiAlias,
               borderRadius: BorderRadius.circular(10.r),
               child: AspectRatio(
                 aspectRatio: 1,
@@ -67,25 +66,26 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 6.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppStyles.textSemiBold16,
-                  ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    '\$ ${product.price.toStringAsFixed(2)}',
-                    style: AppStyles.textMedium12.copyWith(
-                      color: AppColors.grey,
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppStyles.textSemiBold16,
                     ),
-                  ),
-                ],
+                    Text(
+                      '\$ ${product.price.toStringAsFixed(2)}',
+                      style: AppStyles.textMedium12.copyWith(
+                        color: AppColors.grey,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

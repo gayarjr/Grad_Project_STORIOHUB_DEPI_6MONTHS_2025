@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/core/widgets/custom_button.dart';
+import 'package:gradprojectstorio/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 
 class ButtonAndPrice extends StatelessWidget {
@@ -29,7 +31,35 @@ class ButtonAndPrice extends StatelessWidget {
         ),
         SizedBox(width: 24.w),
         Expanded(
-          child: CustomButton(text: 'Add to Cart', onPressed: () {}),
+          child: BlocBuilder<CartCubit, CartState>(
+            builder: (context, state) {
+              var isInCart =
+                  state is CartLoaded &&
+                  state.cartEntity.products.any(
+                    (product) => product.id == this.product.id,
+                  );
+              if (state is CartLoading) {
+                return CustomButton(text: 'Loading...', onPressed: () {});
+              }
+              return isInCart
+                  ? CustomButton(
+                      text: 'Remove from Cart',
+                      onPressed: () {
+                        context.read<CartCubit>().removeFromCart(
+                          productId: product.id,
+                        );
+                      },
+                    )
+                  : CustomButton(
+                      text: 'Add to Cart',
+                      onPressed: () {
+                        context.read<CartCubit>().addToCart(
+                          productId: product.id,
+                        );
+                      },
+                    );
+            },
+          ),
         ),
       ],
     );
