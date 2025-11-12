@@ -22,6 +22,7 @@ class EmptySearchView extends StatelessWidget {
     if (!hasRecent) {
       return Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.search, size: 80, color: Colors.grey.shade400),
             const SizedBox(height: 20),

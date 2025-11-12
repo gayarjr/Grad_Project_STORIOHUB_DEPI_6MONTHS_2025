@@ -18,6 +18,7 @@ class HomeView extends StatelessWidget {
               ..fetchCategories(),
         child: Scaffold(
           appBar: AppBar(
+            centerTitle: true,
             title: Text('Storio', style: AppStyles.textSemiBold32),
           ),
           body: const HomeViewBody(),
