@@ -33,7 +33,7 @@ class NewArrivalSection extends StatelessWidget {
               ),
               SizedBox(height: 12.h),
               GridView.builder(
-                itemCount: products.length,
+                itemCount: 8,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
