@@ -2,12 +2,14 @@ import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/functions/validators.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/core/widgets/custom_button.dart';
 import 'package:gradprojectstorio/core/widgets/custom_snack_bar.dart';
 import 'package:gradprojectstorio/core/widgets/custom_text_field_with_label.dart';
+import 'package:gradprojectstorio/core/widgets/success_dialog.dart';
 import 'package:gradprojectstorio/features/profile/data/models/requests/address_request.dart';
 import 'package:gradprojectstorio/features/profile/presentation/manager/address_cubit/address_cubit.dart';
 
@@ -130,12 +132,13 @@ class _AddNewAddressSheetState extends State<AddNewAddressSheet> {
                   }
                   if (state is AddressLoaded) {
                     Navigator.pop(context);
-                    customSnackBar(
-                      context,
-                      message: 'Address added successfully',
-                      type: AnimatedSnackBarType.success,
+                    showDialog(
+                      context: context,
+                      builder: (context) => SuccessDialog(
+                        onDismiss: () => context.pop(),
+                        message: 'Address added successfully',
+                      ),
                     );
-                    Navigator.pop(context);
                   }
                   if (state is AddressError) {
                     Navigator.pop(context);

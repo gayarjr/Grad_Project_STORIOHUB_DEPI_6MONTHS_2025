@@ -136,16 +136,24 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
             child: TotalAndButton(
               total: widget.total,
               onTap: () {
-                context.read<CheckoutCubit>().cash(
-                  cartId: widget.cartId,
-                  request: CheckoutRequest(
-                    shippingAddress: ShippingAddress(
-                      details: addressResponse.details,
-                      city: addressResponse.city,
-                      phone: addressResponse.phone,
+                if (addressResponse.details != null) {
+                  context.read<CheckoutCubit>().cash(
+                    cartId: widget.cartId,
+                    request: CheckoutRequest(
+                      shippingAddress: ShippingAddress(
+                        details: addressResponse.details,
+                        city: addressResponse.city,
+                        phone: addressResponse.phone,
+                      ),
                     ),
-                  ),
-                );
+                  );
+                } else {
+                  customSnackBar(
+                    context,
+                    message: 'Please Select Address',
+                    type: AnimatedSnackBarType.error,
+                  );
+                }
               },
               buttonText: 'Place Order',
             ),
