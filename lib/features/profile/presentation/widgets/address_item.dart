@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
+import 'package:gradprojectstorio/features/profile/data/models/responses/address_response.dart';
+import 'package:gradprojectstorio/features/profile/presentation/manager/address_cubit/address_cubit.dart';
 
 class AddressItem extends StatelessWidget {
-  const AddressItem({super.key});
+  const AddressItem({super.key, required this.address});
+
+  final AddressResponse address;
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +33,17 @@ class AddressItem extends StatelessWidget {
             size: 30,
           ),
           const SizedBox(width: 10),
-          const Expanded(
+          Expanded(
             child: Text(
-              "Address Example - UI only",
+              "${address.details}, ${address.name}, ${address.city}",
               style: TextStyle(fontSize: 14, color: AppColors.primary),
             ),
           ),
           IconButton(
             icon: const Icon(Icons.delete, color: AppColors.red),
-            onPressed: () {},
+            onPressed: () {
+              context.read<AddressCubit>().deleteAddress(id: address.id ?? '');
+            },
           ),
         ],
       ),

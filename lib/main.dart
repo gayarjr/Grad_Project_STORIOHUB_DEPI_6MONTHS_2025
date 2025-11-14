@@ -18,6 +18,9 @@ import 'package:gradprojectstorio/features/home/domain/entities/category_entity.
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/Product_Cubit.dart';
 import 'package:gradprojectstorio/features/home/presentation/cubit/categories_cubit.dart';
+import 'package:gradprojectstorio/features/profile/data/data_sources/profile_remote_data_source.dart';
+import 'package:gradprojectstorio/features/profile/data/repos/profile_repo_impl.dart';
+import 'package:gradprojectstorio/features/profile/presentation/manager/address_cubit/address_cubit.dart';
 // Hive and Wishlist imports
 import 'package:gradprojectstorio/features/watchlist/data/data_sources/local_wishlist_data_source.dart';
 import 'package:gradprojectstorio/features/watchlist/data/repos/wishlist_repo_impl.dart';
@@ -75,6 +78,16 @@ class Storio extends StatelessWidget {
                 ),
               ),
             )..getCart(),
+          ),
+
+          BlocProvider(
+            create: (context) => AddressCubit(
+              profileRepo: ProfileRepoImpl(
+                profileRemoteDataSource: ProfileRemoteDataSourceImpl(
+                  apiService: ApiService(Dio()),
+                ),
+              ),
+            )..getAddress(),
           ),
         ],
         child: MaterialApp.router(

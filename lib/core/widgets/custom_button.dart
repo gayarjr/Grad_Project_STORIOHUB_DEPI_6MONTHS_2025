@@ -7,12 +7,14 @@ class CustomButton extends StatelessWidget {
   final String text;
   final IconData? icon;
   final VoidCallback onPressed;
+  final bool? designTwo;
 
   const CustomButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.icon,
+    this.designTwo,
   });
 
   @override
@@ -21,9 +23,12 @@ class CustomButton extends StatelessWidget {
       height: 56.h,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: designTwo == true
+              ? AppColors.white
+              : AppColors.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.r),
+            side: BorderSide(color: AppColors.primary),
           ),
         ),
         onPressed: onPressed,
@@ -32,11 +37,17 @@ class CustomButton extends StatelessWidget {
           children: [
             Text(
               text,
-              style: AppStyles.textMedium16.copyWith(color: AppColors.white),
+              style: AppStyles.textMedium16.copyWith(
+                color: designTwo == true ? AppColors.primary : AppColors.white,
+              ),
             ),
             if (icon != null) ...[
               const SizedBox(width: 8),
-              Icon(icon, color: AppColors.white, size: 20),
+              Icon(
+                icon,
+                color: designTwo == true ? AppColors.primary : AppColors.white,
+                size: 20,
+              ),
             ],
           ],
         ),
