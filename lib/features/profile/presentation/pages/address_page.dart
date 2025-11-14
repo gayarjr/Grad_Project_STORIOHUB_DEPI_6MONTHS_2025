@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
-import 'package:gradprojectstorio/features/address/presentation/widgets/address_item.dart';
-import 'package:gradprojectstorio/features/address/presentation/widgets/add_new_address_sheet.dart';
+import 'package:gradprojectstorio/features/profile/presentation/widgets/address_item.dart';
+import 'package:gradprojectstorio/features/profile/presentation/widgets/add_new_address_sheet.dart';
 
 class AddressPage extends StatelessWidget {
   const AddressPage({super.key});

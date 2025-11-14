@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
-import 'package:gradprojectstorio/features/address/presentation/views/address_page.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/otp_view.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/register_page.dart';
@@ -15,6 +14,7 @@ import 'package:gradprojectstorio/features/intro/onboarding/presentation/pages/o
 import 'package:gradprojectstorio/features/intro/splash/presentation/pages/splash_page.dart';
 import 'package:gradprojectstorio/features/main/main_view.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
+import 'package:gradprojectstorio/features/profile/presentation/pages/address_page.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/change_password.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_details.dart';
@@ -77,7 +77,7 @@ abstract class AppGoRouter {
       ),
       GoRoute(
         path: AppRoutes.editProfile,
-        builder: (context, state) => const MyDetails(),
+        builder: (context, state) => const EditProfileView(),
       ),
       GoRoute(
         path: AppRoutes.changePassword,
