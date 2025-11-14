@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> {
     if (token != null && token.isNotEmpty) {
       context.go(AppRoutes.main);
     } else {
-      context.go(AppRoutes.login);
+      context.go(AppRoutes.onboarding);
     }
   }
 

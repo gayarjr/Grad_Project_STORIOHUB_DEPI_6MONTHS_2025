@@ -43,7 +43,10 @@ class CartViewBody extends StatelessWidget {
                   onTap: () {
                     context.push(
                       AppRoutes.checkout,
-                      extra: state.cartEntity.totalPrice.toStringAsFixed(2),
+                      extra: {
+                        'total': state.cartEntity.totalPrice.toStringAsFixed(2),
+                        'cartId': state.cartEntity.cartId,
+                      },
                     );
                   },
                   buttonText: 'Checkout',

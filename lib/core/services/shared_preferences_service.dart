@@ -15,7 +15,6 @@ class Prefs {
   static String? getCartId() => _prefs?.getString('cartId');
 
   static Future<void> clearUserData() async {
-    await _prefs?.remove('user');
     await _prefs?.remove('cartId');
     await clearToken();
   }

@@ -17,9 +17,9 @@ class ProductsViewBody extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 20.w,
-          mainAxisSpacing: 20.h,
-          childAspectRatio: 0.6,
+          crossAxisSpacing: 16.w,
+          mainAxisSpacing: 16.h,
+          childAspectRatio: 0.7,
         ),
         itemBuilder: (context, index) => ProductCard(product: products[index]),
       ),

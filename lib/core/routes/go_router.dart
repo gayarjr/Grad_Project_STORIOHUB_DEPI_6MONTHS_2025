@@ -85,8 +85,10 @@ abstract class AppGoRouter {
       ),
       GoRoute(
         path: AppRoutes.checkout,
-        builder: (context, state) =>
-            CheckoutScreen(total: state.extra as String),
+        builder: (context, state) {
+          final argms = state.extra as Map<String, dynamic>;
+          return CheckoutScreen(total: argms['total'], cartId: argms['cartId']);
+        },
       ),
       GoRoute(
         path: AppRoutes.productsCategories,

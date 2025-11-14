@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
+import 'package:gradprojectstorio/core/services/shared_preferences_service.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -61,7 +62,10 @@ class AccountScreen extends StatelessWidget {
               height: 20,
             ),
             title: const Text('Logout', style: TextStyle(color: Colors.red)),
-            onTap: () {},
+            onTap: () async {
+              context.go(AppRoutes.login);
+              await Prefs.clearUserData();
+            },
           ),
         ],
       ),
