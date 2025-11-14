@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradprojectstorio/core/utils/app_styles.dart';
 import 'package:gradprojectstorio/features/profile/presentation/widgets/order_item_idgets.dart';
 
 class MyOrder extends StatelessWidget {
@@ -8,10 +9,8 @@ class MyOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Orders'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
+        centerTitle: true,
+        title: Text('My Orders', style: AppStyles.textSemiBold24),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),

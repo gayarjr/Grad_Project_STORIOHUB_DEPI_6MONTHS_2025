@@ -1,51 +1,32 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gradprojectstorio/core/services/api_service.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
-import 'package:gradprojectstorio/core/widgets/custom_button.dart';
-import 'package:gradprojectstorio/core/widgets/password_field.dart';
+import 'package:gradprojectstorio/features/profile/data/data_sources/profile_remote_data_source.dart';
+import 'package:gradprojectstorio/features/profile/data/repos/profile_repo_impl.dart';
+import 'package:gradprojectstorio/features/profile/presentation/manager/change_password_cubit/change_password_cubit.dart';
+import 'package:gradprojectstorio/features/profile/presentation/widgets/change_password_view_body.dart';
 
 class ChangePassword extends StatelessWidget {
   const ChangePassword({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Change Password', style: AppStyles.textSemiBold24),
-        centerTitle: true,
+    return BlocProvider(
+      create: (context) => ChangePasswordCubit(
+        profileRepo: ProfileRepoImpl(
+          profileRemoteDataSource: ProfileRemoteDataSourceImpl(
+            apiService: ApiService(Dio()),
+          ),
+        ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Container(height: 1, color: Colors.grey[300]),
-          ),
-          SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 24.h),
-                PasswordField(
-                  labelText: "Current Password",
-                  hintText: 'Enter your current password',
-                ),
-                SizedBox(height: 16.h),
-                PasswordField(
-                  labelText: "New Password",
-                  hintText: 'Enter your new password',
-                ),
-                SizedBox(height: 16.h),
-                PasswordField(
-                  labelText: "Confirm New Password",
-                  hintText: 'Re-enter your new password',
-                ),
-                SizedBox(height: 32.h),
-                CustomButton(text: 'Submit', onPressed: () {}),
-              ],
-            ),
-          ),
-        ],
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Change Password', style: AppStyles.textSemiBold24),
+          centerTitle: true,
+        ),
+        body: ChangePasswordViewBody(),
       ),
     );
   }

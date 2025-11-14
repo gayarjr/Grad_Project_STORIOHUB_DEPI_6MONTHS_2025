@@ -78,7 +78,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                   if (state is UpdateMeLoading) {
                     showDialog(
                       context: context,
-                      barrierDismissible: true,
+                      barrierDismissible: false,
                       builder: (context) => Center(
                         child: CircularProgressIndicator(
                           color: AppColors.primary,
