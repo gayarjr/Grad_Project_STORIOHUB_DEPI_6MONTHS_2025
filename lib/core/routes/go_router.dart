@@ -5,7 +5,10 @@ import 'package:gradprojectstorio/features/auth/presentation/views/forgot_passwo
 import 'package:gradprojectstorio/features/auth/presentation/views/otp_view.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/register_page.dart';
 import 'package:gradprojectstorio/features/auth/presentation/views/reset_password_view.dart';
+import 'package:gradprojectstorio/features/categories/presentation/views/categories_view.dart';
+import 'package:gradprojectstorio/features/categories/presentation/views/products_category_view.dart';
 import 'package:gradprojectstorio/features/checkout/presentation/views/checkout_screen.dart';
+import 'package:gradprojectstorio/features/home/domain/entities/category_entity.dart';
 import 'package:gradprojectstorio/features/home/domain/entities/product_entity.dart';
 import 'package:gradprojectstorio/features/home/presentation/views/products_view.dart';
 import 'package:gradprojectstorio/features/intro/onboarding/presentation/pages/onboarding_page.dart';
@@ -77,13 +80,23 @@ abstract class AppGoRouter {
         builder: (context, state) => const MyDetails(),
       ),
       GoRoute(
+        path: AppRoutes.changePassword,
+        builder: (context, state) => const ChangePassword(),
+      ),
+      GoRoute(
         path: AppRoutes.checkout,
         builder: (context, state) =>
             CheckoutScreen(total: state.extra as String),
       ),
       GoRoute(
-        path: AppRoutes.editProfile,
-        builder: (context, state) => const ChangePassword(),
+        path: AppRoutes.productsCategories,
+        builder: (context, state) =>
+            ProductsCategoryView(category: state.extra as CategoryEntity),
+      ),
+      GoRoute(
+        path: AppRoutes.categories,
+        builder: (context, state) =>
+            CategoriesView(categories: state.extra as List<CategoryEntity>),
       ),
 
       GoRoute(
