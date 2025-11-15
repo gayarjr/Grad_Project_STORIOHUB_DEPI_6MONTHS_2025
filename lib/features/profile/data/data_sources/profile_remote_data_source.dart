@@ -4,6 +4,7 @@ import 'package:gradprojectstorio/features/profile/data/models/requests/change_p
 import 'package:gradprojectstorio/features/profile/data/models/requests/update_me_request.dart';
 import 'package:gradprojectstorio/features/profile/data/models/responses/address_response.dart';
 import 'package:gradprojectstorio/features/profile/data/models/responses/change_password_response/change_password_response.dart';
+import 'package:gradprojectstorio/features/profile/data/models/responses/my_order.dart';
 import 'package:gradprojectstorio/features/profile/data/models/responses/update_me_response/update_me_response.dart';
 
 abstract class ProfileRemoteDataSource {
@@ -14,6 +15,7 @@ abstract class ProfileRemoteDataSource {
   Future<List<AddressResponse>> getAddress();
   Future<List<AddressResponse>> addAddress({required AddressRequest request});
   Future<List<AddressResponse>> deleteAddress({required String addressId});
+  Future<List<OrderModel>> getOrder();
 }
 
 class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
@@ -73,5 +75,18 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
       data: request.toJson(),
     );
     return UpdateMeResponse.fromJson(response);
+  }
+
+  @override
+  Future<List<OrderModel>> getOrder() async {
+    var response = await apiService.get(
+      endPoint: '/api/v1/orders/user/6407cf6f515bdcf347c09f17',
+    );
+
+    List<OrderModel> getOrderAndTransferToObject = (response['data'] as List)
+        .map((e) => OrderModel.fromJson(e as Map<String, dynamic>))
+        .toList();
+
+    return getOrderAndTransferToObject;
   }
 }
