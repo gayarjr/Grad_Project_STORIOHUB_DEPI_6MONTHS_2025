@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
 import 'package:gradprojectstorio/core/services/shared_preferences_service.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
+import 'package:gradprojectstorio/features/profile/domain/repos/profile_repo.dart';
+import 'package:gradprojectstorio/features/profile/presentation/manager/My_Order_Cubit/my_order_cubit.dart';
+import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_main_page.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -21,7 +25,15 @@ class AccountScreen extends StatelessWidget {
             icon: Icons.list_alt_outlined,
             title: 'My Orders',
             onTap: () {
-              context.push(AppRoutes.order);
+              context.push(
+                AppRoutes.order,
+                extra: BlocProvider(
+                  create: (context) =>
+                      MyOrderCubit(profileRepo: context.read<ProfileRepo>())
+                        ..getOrder(),
+                  child: MyOrderMainPage(),
+                ),
+              );
             },
           ),
           const Divider(),

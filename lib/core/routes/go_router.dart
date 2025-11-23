@@ -18,6 +18,7 @@ import 'package:gradprojectstorio/features/profile/presentation/pages/address_pa
 import 'package:gradprojectstorio/features/profile/presentation/pages/change_password.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_details.dart';
+import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_main_page.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_pages_withouts_data.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
@@ -73,7 +74,7 @@ abstract class AppGoRouter {
       ),
       GoRoute(
         path: AppRoutes.orderDetails,
-        builder: (context, state) => MyOrder(),
+        builder: (context, state) => MyOrderMainPage(),
       ),
       GoRoute(
         path: AppRoutes.editProfile,
