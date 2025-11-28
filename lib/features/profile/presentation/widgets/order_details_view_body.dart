@@ -1,41 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gradprojectstorio/features/profile/presentation/widgets/order_details_wid.dart';
+import 'package:gradprojectstorio/features/profile/domain/entities/orders_entity.dart';
+import 'package:gradprojectstorio/features/profile/presentation/widgets/order_item.dart';
 
 class OrderDetailsViewBody extends StatelessWidget {
-  const OrderDetailsViewBody({super.key});
+  const OrderDetailsViewBody({super.key, required this.order});
+
+  final OrdersEntity order;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 24.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               Text(
-                'Order #123456',
+                'Order #${order.id}',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Text('6 Items'),
+              Text('${order.items.length} Items'),
             ],
           ),
           const SizedBox(height: 16),
-          const OrderDetails(
-            itemName: 'Regular Fit Black T-Shirt',
-            quantity: 'Quantity: 3',
-            price: '\$1,290',
-            assetPath: 'images/view.png',
-          ),
-          const SizedBox(height: 8),
-          const OrderDetails(
-            itemName: 'Regular Fit Black Hoodie ',
-            quantity: 'Quantity: 3',
-            price: '\$1,290',
-            assetPath: 'images/view.png',
-          ),
-          const SizedBox(height: 32),
+          ...order.items.map((item) => OrderItem(item: item)),
+          const SizedBox(height: 16),
           const Text(
             'Order Information',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -44,14 +37,30 @@ class OrderDetailsViewBody extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Shipping Address:"),
+              Text("Shipping Address: "),
               Flexible(
                 fit: FlexFit.loose,
-                child: const Text(
+                child: Text(
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
-                  ' 3 Newbridge Court, Chino Hills, CA 91709, United States',
+                  order.address,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Phone: "),
+              Flexible(
+                fit: FlexFit.loose,
+                child: Text(
+                  order.phone,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -59,21 +68,9 @@ class OrderDetailsViewBody extends StatelessWidget {
           const SizedBox(height: 8),
           Row(
             children: [
-              Text("Payment method:"),
+              Text("Payment method: "),
               const Text(
-                ' Cash ',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: [
-              Text("Total Amount: "),
-              const Text(
-                '133',
+                'Cash',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontWeight: FontWeight.bold),

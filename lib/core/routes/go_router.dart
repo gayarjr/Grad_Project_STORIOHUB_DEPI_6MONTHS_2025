@@ -14,10 +14,12 @@ import 'package:gradprojectstorio/features/intro/onboarding/presentation/pages/o
 import 'package:gradprojectstorio/features/intro/splash/presentation/pages/splash_page.dart';
 import 'package:gradprojectstorio/features/main/main_view.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
+import 'package:gradprojectstorio/features/profile/domain/entities/orders_entity.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/address_page.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/change_password.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_details.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_view.dart';
+import 'package:gradprojectstorio/features/profile/presentation/pages/order_details_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 
 abstract class AppGoRouter {
@@ -66,8 +68,13 @@ abstract class AppGoRouter {
             ProductDetailsView(product: state.extra as ProductEntity),
       ),
       GoRoute(
+        path: AppRoutes.order,
+        builder: (context, state) => MyOrderView(),
+      ),
+      GoRoute(
         path: AppRoutes.orderDetails,
-        builder: (context, state) => MyOrderMainPage(),
+        builder: (context, state) =>
+            OrderDetailsView(order: state.extra as OrdersEntity),
       ),
       GoRoute(
         path: AppRoutes.editProfile,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gradprojectstorio/core/functions/navigate_to_tab.dart';
 import 'package:gradprojectstorio/core/routes/app_routes.dart';
 import 'package:gradprojectstorio/core/utils/app_colors.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
@@ -118,7 +119,10 @@ class _CheckoutScreenBodyState extends State<CheckoutScreenBody> {
                 showDialog(
                   context: context,
                   builder: (context) => SuccessDialog(
-                    onDismiss: () => context.go(AppRoutes.main),
+                    onDismiss: () {
+                      navigateToTab(context, 0);
+                      context.go(AppRoutes.main);
+                    },
                     message: 'Order Placed Successfully',
                   ),
                 );

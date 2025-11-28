@@ -135,7 +135,10 @@ class _AddNewAddressSheetState extends State<AddNewAddressSheet> {
                     showDialog(
                       context: context,
                       builder: (context) => SuccessDialog(
-                        onDismiss: () => context.pop(),
+                        onDismiss: () {
+                          context.pop();
+                          context.pop();
+                        },
                         message: 'Address added successfully',
                       ),
                     );
