@@ -24,9 +24,7 @@ import 'package:gradprojectstorio/features/cart/presentation/cubit/cart_cubit.da
 import 'package:gradprojectstorio/features/profile/data/data_sources/profile_remote_data_source.dart';
 import 'package:gradprojectstorio/features/profile/data/repos/profile_repo_impl.dart';
 import 'package:gradprojectstorio/features/profile/domain/repos/profile_repo.dart';
-import 'package:gradprojectstorio/features/profile/presentation/manager/My_Order_Cubit/my_order_cubit.dart';
 import 'package:gradprojectstorio/features/profile/presentation/manager/address_cubit/address_cubit.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_main_page.dart';
 
 // Wishlist imports
 import 'package:gradprojectstorio/features/watchlist/data/data_sources/local_wishlist_data_source.dart';
@@ -108,13 +106,6 @@ class Storio extends StatelessWidget {
               create: (context) =>
                   AddressCubit(profileRepo: context.read<ProfileRepo>())
                     ..getAddress(),
-            ),
-
-            // MyOrder Cubit
-            BlocProvider(
-              create: (context) =>
-                  MyOrderCubit(profileRepo: context.read<ProfileRepo>())
-                    ..getOrder(),
             ),
           ],
           child: MaterialApp.router(

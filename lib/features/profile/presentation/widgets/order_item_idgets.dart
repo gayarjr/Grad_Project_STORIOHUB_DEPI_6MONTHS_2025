@@ -77,7 +77,7 @@ class OrderItemWidget extends StatelessWidget {
                       onPressed: () {},
                       child: const Text(
                         'Track Order',
-                        style: TextStyle(fontSize: 12), //
+                        style: TextStyle(fontSize: 12),
                       ),
                     ),
                   ),

@@ -16,11 +16,8 @@ import 'package:gradprojectstorio/features/main/main_view.dart';
 import 'package:gradprojectstorio/features/product_details/presentation/views/product_details_view.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/address_page.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/change_password.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/my_order.dart';
 import 'package:gradprojectstorio/features/profile/presentation/pages/my_details.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_main_page.dart';
-import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_pages_withouts_data.dart';
-
+import 'package:gradprojectstorio/features/profile/presentation/pages/my_order_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 
 abstract class AppGoRouter {
@@ -67,10 +64,6 @@ abstract class AppGoRouter {
         path: AppRoutes.productDetails,
         builder: (context, state) =>
             ProductDetailsView(product: state.extra as ProductEntity),
-      ),
-      GoRoute(
-        path: AppRoutes.order,
-        builder: (context, state) => MyOrdersScreenWithoutData(),
       ),
       GoRoute(
         path: AppRoutes.orderDetails,

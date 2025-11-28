@@ -7,7 +7,7 @@ import 'package:gradprojectstorio/features/profile/data/models/requests/address_
 import 'package:gradprojectstorio/features/profile/data/models/requests/change_password_request.dart';
 import 'package:gradprojectstorio/features/profile/data/models/requests/update_me_request.dart';
 import 'package:gradprojectstorio/features/profile/data/models/responses/address_response.dart';
-import 'package:gradprojectstorio/features/profile/data/models/responses/my_order.dart';
+import 'package:gradprojectstorio/features/profile/domain/entities/orders_entity.dart';
 import 'package:gradprojectstorio/features/profile/domain/repos/profile_repo.dart';
 
 class ProfileRepoImpl extends ProfileRepo {
@@ -97,9 +97,11 @@ class ProfileRepoImpl extends ProfileRepo {
   }
 
   @override
-  Future<Either<Failure, List<OrderModel>>> getMyOrder() async {
+  Future<Either<Failure, List<OrdersEntity>>> getOrders({
+    required String userId,
+  }) async {
     try {
-      var data = await profileRemoteDataSource.getOrder();
+      final data = await profileRemoteDataSource.getOrders(userId: userId);
       return Right(data);
     } catch (e) {
       if (e is DioException) {

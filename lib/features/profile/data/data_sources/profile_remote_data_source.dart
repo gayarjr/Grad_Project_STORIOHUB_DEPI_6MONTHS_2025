@@ -1,13 +1,12 @@
 import 'package:gradprojectstorio/core/services/api_service.dart';
-import 'package:gradprojectstorio/core/services/shared_preferences_service.dart';
 import 'package:gradprojectstorio/features/profile/data/models/requests/address_request.dart';
 import 'package:gradprojectstorio/features/profile/data/models/requests/change_password_request.dart';
 import 'package:gradprojectstorio/features/profile/data/models/requests/update_me_request.dart';
 import 'package:gradprojectstorio/features/profile/data/models/responses/address_response.dart';
 import 'package:gradprojectstorio/features/profile/data/models/responses/change_password_response/change_password_response.dart';
-import 'package:gradprojectstorio/features/profile/data/models/responses/my_order.dart';
+import 'package:gradprojectstorio/features/profile/data/models/responses/orders_response/orders_response.dart';
 import 'package:gradprojectstorio/features/profile/data/models/responses/update_me_response/update_me_response.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gradprojectstorio/features/profile/domain/entities/orders_entity.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<UpdateMeResponse> updateMe({required UpdateMeRequest request});
@@ -17,7 +16,7 @@ abstract class ProfileRemoteDataSource {
   Future<List<AddressResponse>> getAddress();
   Future<List<AddressResponse>> addAddress({required AddressRequest request});
   Future<List<AddressResponse>> deleteAddress({required String addressId});
-  Future<List<OrderModel>> getOrder();
+  Future<List<OrdersEntity>> getOrders({required String userId});
 }
 
 class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
@@ -80,31 +79,12 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   }
 
   @override
-  Future<List<OrderModel>> getOrder() async {
-    final cartId = Prefs.getCartId();
-    print("Cart ID From SharedPreferences = $cartId");
-
-    if (cartId == null) {
-      print(" cartId is NULL !");
-      return [];
+  Future<List<OrdersEntity>> getOrders({required String userId}) async {
+    final response = await apiService.get(endPoint: '/orders/user/$userId');
+    List<OrdersEntity> orders = [];
+    for (var order in response) {
+      orders.add(OrdersResponse.fromJson(order).toEntity());
     }
-    dynamic response;
-    try {
-      response = await apiService.get(endPoint: '/orders/user/$cartId');
-
-      print("Raw API Response: $response");
-    } catch (e) {
-      print("API Error: $e");
-    }
-
-    if (response == null) {
-      return [];
-    }
-
-    List<OrderModel> getOrderAndTransferToObject = (response['data'] as List)
-        .map((e) => OrderModel.fromJson(e as Map<String, dynamic>))
-        .toList();
-
-    return getOrderAndTransferToObject;
+    return orders;
   }
 }

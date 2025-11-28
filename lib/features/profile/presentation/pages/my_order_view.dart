@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gradprojectstorio/core/utils/app_styles.dart';
-import 'package:gradprojectstorio/features/profile/presentation/widgets/empty_orders.dart';
+import 'package:gradprojectstorio/features/profile/presentation/widgets/my_orders_view_body.dart';
 
-class MyOrdersScreenWithoutData extends StatelessWidget {
-  const MyOrdersScreenWithoutData({super.key});
+class MyOrderMainPage extends StatelessWidget {
+  const MyOrderMainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class MyOrdersScreenWithoutData extends StatelessWidget {
         centerTitle: true,
         title: Text('My Orders', style: AppStyles.textSemiBold24),
       ),
-      body: EmptyOrders(),
+      body: MyOrdersViewBody(),
     );
   }
 }

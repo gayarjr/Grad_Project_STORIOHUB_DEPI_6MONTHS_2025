@@ -4,7 +4,7 @@ import 'package:gradprojectstorio/features/profile/data/models/requests/address_
 import 'package:gradprojectstorio/features/profile/data/models/requests/change_password_request.dart';
 import 'package:gradprojectstorio/features/profile/data/models/requests/update_me_request.dart';
 import 'package:gradprojectstorio/features/profile/data/models/responses/address_response.dart';
-import 'package:gradprojectstorio/features/profile/data/models/responses/my_order.dart';
+import 'package:gradprojectstorio/features/profile/domain/entities/orders_entity.dart';
 
 abstract class ProfileRepo {
   Future<Either<Failure, void>> updateMe({required UpdateMeRequest request});
@@ -18,5 +18,8 @@ abstract class ProfileRepo {
   Future<Either<Failure, List<AddressResponse>>> deleteAddress({
     required String addressId,
   });
-  Future<Either<Failure, List<OrderModel>>> getMyOrder();
+
+  Future<Either<Failure, List<OrdersEntity>>> getOrders({
+    required String userId,
+  });
 }
