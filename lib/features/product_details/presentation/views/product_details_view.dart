@@ -13,30 +13,16 @@ class ProductDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.5,
         centerTitle: true,
-        title: Text(
-          'Product Details',
-          style: AppStyles.textSemiBold20.copyWith(
-            color: Colors.black87,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        title: Text('Product Details', style: AppStyles.textSemiBold24),
         iconTheme: const IconThemeData(color: Colors.black87),
         actions: [
           IconFavButtom(product: product),
           SizedBox(width: 16.w),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: ProductDetailsViewBody(product: product),
-        ),
-      ),
+      body: ProductDetailsViewBody(product: product),
     );
   }
 }

@@ -24,22 +24,16 @@ class ProductDetailsViewBody extends StatelessWidget {
           children: [
             HeaderProductDetails(product: product),
             SizedBox(height: 24.h),
-
             SelectSizeProduct(),
             SizedBox(height: 24.h),
-
-            SizedBox(height: 16.h),
-
             DescriptionSection(product: product),
             SizedBox(height: 24.h),
-
             BrandSection(product: product),
             SizedBox(height: 24.h),
-
             ShippingSection(product: product),
             SizedBox(height: 16.h),
             ButtonAndPrice(product: product),
-            SizedBox(height: 12.h),
+            SizedBox(height: 24.h),
           ],
         ),
       ),
