@@ -1,16 +1,21 @@
-# gradprojectstorio
+# Storio Hub
 
-A new Flutter project.
+**Storio Hub** is a Flutter application that allows anyone to open their own business inside the app. Users can showcase their products, brand, or items, like fashion and clothing, directly to customers.
 
-## Getting Started
+## Features
+- **Authentication:** Users can sign up, log in, and manage their account.
+- **Search:** Find products or brands easily.
+- **Profile:** Manage user information and settings.
+- **Cart & Checkout:** Add products to cart and complete purchases.
+- **API Integration:** Fetch and manage data from backend services.
 
-This project is a starting point for a Flutter application.
+## Architecture & State Management
+- **Clean Architecture**
+- **Dio** (for network requests)
+- **Cubit & Hive** (for state management and local storage)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tech Stack
+- Flutter
+- Dart
+- Firebase (optional if you used it)
+- REST API
